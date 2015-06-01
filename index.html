@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Mobile Rich Text Editor</title>
+  <link rel="stylesheet" href="src/pencil.css">
+  <style>
+    html, body {
+      margin: 0px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="pencil-container">
+  <textarea id="pencil-editor" class="textarea" placeholder="Enter text ..." style="width: 100%; height: 200px"></textarea>
+</div>
+
+<script src="src/pencil.js"></script>
+<script>
+  Pencil.initPencil(document.getElementById('pencil-editor'));
+  //  var pencil = new Pencil('pencil-editor');
+</script>
+</body>
+</html>
