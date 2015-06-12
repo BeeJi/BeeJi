@@ -1,27 +1,12 @@
-# Pencil
-
-
-功能点：
-上传图片(上传图片前压缩)
-手写
-绘画
-插入二维码
-
-
-
-接口：
-可以设置保存的回调函数
-
-
-初始化：
-1. 可以对某个dom进行初始化
-2. 可以直接初始化一个完整的页面
-3. 初始化点击事件，点击后，弹出一个编辑窗口
-
-
-参数：
-可以定义使用哪些按钮
-可以定义回调函数
-
-
-
+* bower install bee --save
+* import js, css files
+* init
+```javascript
+var objInit = {
+  className: 'editor',
+  type: 'click',
+  cancelText: '取消',
+  okText: '确定'
+};
+bee.fly(objInit);
+```

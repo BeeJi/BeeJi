@@ -2,20 +2,23 @@
 <html>
 <head lang="en">
   <meta charset="UTF-8">
-  <title></title>
+  <title>Click Event to init Bee Editor</title>
+  <link rel="stylesheet" href="../src/bee.css">
 </head>
 <body>
 
 <div class="editor"><p>Edit on mobile is easy</p></div>
 <div class="editor">Hello world, mobile rich text editor</div>
 
-<script src="../src/pencil.js"></script>
+<script src="../src/bee.js"></script>
 <script>
   var objInit = {
     className: 'editor',
-    type: 'click'
+    type: 'click',
+    cancelText: '取消',
+    okText: '确定'
   };
-  Pencil.initPencil(objInit);
+  bee.fly(objInit);
 </script>
 </body>
 </html>
