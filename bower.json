@@ -1,0 +1,22 @@
+{
+  "name": "Bee",
+  "version": "0.0.1",
+  "homepage": "https://github.com/GYF1/Bee",
+  "authors": [
+    "hi@gyf1.com"
+  ],
+  "description": "HTML5 Mobile Rich Text Editor || HTML5 Mobile WYSIWYG",
+  "main": "bee.js",
+  "keywords": [
+    "WYSIWYG",
+    "Rich Text Editor"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

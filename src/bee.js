@@ -35,9 +35,9 @@
         '</label>',
         '</li>',
         '<li><a>涂鸦</a></li>',
-        '<li>',
+        '<li data-toggle="dropdown">',
         '<a>插入</a>',
-        '<ul class="bee-dropdown"><li>二维码</li><li>日期</li><li>链接</li></ul>',
+        '<ul class="bee-dropdown-menu"><li>二维码</li><li>日期</li><li>链接</li></ul>',
         '</li>',
         '</ul>',
         '</div>',
@@ -53,8 +53,10 @@
     destroy: function () {
       objBee = null;
       doc.body.removeChild(domContainer);
-    }
+    },
+    extend: function (src, dest) {
 
+    }
   };
 
 

@@ -192,7 +192,10 @@ label.myLabel input[type="file"] {
 }
 
 
-.bee-dropdown {
+.bee-dropdown-menu {
   display: none;
 }
 
+.dropdown-toggle:active .bee-dropdown {
+  display: block;
+}
