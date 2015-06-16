@@ -10,3 +10,8 @@ var objInit = {
 };
 bee.fly(objInit);
 ```
+
+
+# Available versions
+Run bower info bee to list the available versions.
+
