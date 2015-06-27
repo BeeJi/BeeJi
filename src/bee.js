@@ -25,14 +25,13 @@
         '<div class="bee-modal-footer">',
         '<ul>',
         '<li>',
-        '<a>手写</a>',
-        //'<ul class="bee-dropdown"><li>颜色</li><li>日期</li><li>链接</li></ul>',
-        '</li>',
-        '<li>',
-        '<label class="myLabel">',
+        '<label class="upload-label">',
         '<input class="upload-image" type="file"/>',
         '<span>上传图片</span>',
         '</label>',
+        '</li>',
+        '<li>',
+        '<a>手写</a>',
         '</li>',
         '<li><a>涂鸦</a></li>',
         '<li data-toggle="dropdown">',
@@ -50,9 +49,9 @@
     stopPropagation : function (e) {
       e.stopPropagation();
     },
-    destroy: function () {
+    destroy: function (node) {
       objBee = null;
-      doc.body.removeChild(domContainer);
+      doc.body.removeChild(node);
     },
     extend: function (src, dest) {
 
@@ -76,7 +75,11 @@
     reader.readAsDataURL(files[0]);
     reader.onload = function (_file) {
       image.src = _file.target.result;
-      _that._range.insertNode(image);
+      if (_that._range !== undefined) {
+        _that._range.insertNode(image);
+      } else {
+
+      }
     };
   };
 
@@ -84,7 +87,7 @@
     var _that = this;
 
     this.modal.addEventListener('click', function () {
-      utils.destroy(this);
+      utils.destroy(_that.modal);
     });
 
     this.modal.querySelector('div.bee-modal').addEventListener('click', function (event) {
@@ -93,7 +96,7 @@
 
     this.modal.querySelector('button.bee-btn-cancel').addEventListener('click', function (event) {
       utils.stopPropagation(event);
-      utils.destroy(this);
+      utils.destroy(_that.modal);
     });
 
     this.modal.querySelector('button.bee-btn-ok').addEventListener('click', function (event) {
@@ -119,6 +122,15 @@
         domObj.content = this.innerHTML;
         objBee = new BeeClass(domObj);
         objBee.addEventListener();
+
+
+        //var s = window.getSelection(),
+        //  r = document.createRange(),
+        //  editorDiv = objBee.modal.querySelector('div#bee-editor-content');
+        //r.setStart(editorDiv, 0);
+        //r.setEnd(editorDiv, 0);
+        //s.removeAllRanges();
+        //s.addRange(r);
       });
     }
   };

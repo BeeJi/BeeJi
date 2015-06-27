@@ -12,10 +12,6 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-
-
-
-
 .bee-modal {
   position: absolute;
   top: 0;
@@ -101,6 +97,10 @@
   box-shadow: none;
 }
 
+.bee-modal .bee-modal-header .bee-btn:focus {
+  outline:0;
+}
+
 .bee-modal .bee-modal-header .bee-btn-cancel {
   color: #ef4e3a;
   float: left;
@@ -130,6 +130,7 @@
   color: red;
   width: 100%;
   height: 100%;
+  position: absolute;
 }
 
 .bee-modal .bee-modal-footer {
@@ -157,38 +158,43 @@
   display: inline-block;
   width: 25%;
   text-align: center;
+  cursor: pointer;
 }
 
 
 /*upload image button style*/
-label.myLabel input[type="file"] {
+label.upload-label input[type="file"] {
   position: fixed;
   top: -1000px;
 }
 
-.myLabel {
+.upload-label {
   /*border: 2px solid #AAA;*/
   /*border-radius: 4px;*/
   padding: 2px 5px;
   margin: 2px;
-  background: #DDD;
+  /*background: #DDD;*/
   display: inline-block;
   height: 44px;
   line-height: 44px;
   padding: 0;
   margin: 0;
+  width:100%;
+  cursor: pointer;
 }
-.myLabel:hover {
+.upload-label:hover {
   background: #CCC;
 }
-.myLabel:active {
+.upload-label:active {
   background: #CCF;
+  background: #DDD;
 }
-.myLabel :invalid + span {
+.upload-label :invalid + span {
   color: #A44;
 }
-.myLabel :valid + span {
-  color: #4A4;
+.upload-label :valid + span {
+  /*color: #4A4;*/
+  color: #333333;
 }
 
 
