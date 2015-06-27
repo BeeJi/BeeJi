@@ -2,10 +2,10 @@
 (function (root, doc) {
   'use strict';
 
-  var BeeClass, objBee, utils = {}, modals = {};
+  var BeeClass, objBee, utils = {}, htmlTemplates = {}, initMode = {};
   var selection = doc.getSelection();
 
-  modals = {
+  htmlTemplates = {
     getClickerModalHTML: function (options) {
       return [
         '<div class="bee-modal">',
@@ -30,7 +30,7 @@
         '<span>上传图片</span>',
         '</label>',
         '</li>',
-        '<li>',
+        '<li class="handwriting">',
         '<a>手写</a>',
         '</li>',
         '<li><a>涂鸦</a></li>',
@@ -40,6 +40,13 @@
         '</li>',
         '</ul>',
         '</div>',
+        '</div>'
+      ].join('');
+    },
+    getHandWritingHTML: function () {
+      return [
+        '<div class="bee-handwriting-panel">',
+        '<canvas id="handwring-canvas"></canvas>',
         '</div>'
       ].join('');
     }
@@ -62,11 +69,25 @@
   BeeClass = function (config) {
     var divModal = doc.createElement('div');
     divModal.className = 'bee-backdrop';
-    divModal.innerHTML = modals.getClickerModalHTML(config);
+    divModal.innerHTML = htmlTemplates.getClickerModalHTML(config);
     doc.body.appendChild(divModal);
     this.modal = divModal;
   };
 
+
+  BeeClass.prototype.openHandWritingPanel = function () {
+    console.log('hand writing');
+
+    this.divHandwriting = doc.createElement('div');
+    this.divHandwriting.className = 'bee-handwriting';
+    this.divHandwriting.innerHTML = htmlTemplates.getHandWritingHTML();
+    this.modal.appendChild(this.divHandwriting);
+
+  };
+
+  BeeClass.prototype.removeHandWritingPanel = function () {
+    this.modal.removeChild(this.divHandwriting);
+  };
 
   BeeClass.prototype.insertImage = function (files) {
     var reader = new FileReader();
@@ -86,9 +107,9 @@
   BeeClass.prototype.addEventListener = function () {
     var _that = this;
 
-    this.modal.addEventListener('click', function () {
-      utils.destroy(_that.modal);
-    });
+    //this.modal.addEventListener('click', function () {
+    //  utils.destroy(_that.modal);
+    //});
 
     this.modal.querySelector('div.bee-modal').addEventListener('click', function (event) {
       utils.stopPropagation(event);
@@ -112,28 +133,46 @@
     this.modal.querySelector('input.upload-image').addEventListener('change', function () {
       _that.insertImage(this.files);
     });
+
+    this.modal.querySelector('li.handwriting').addEventListener('click', function () {
+      console.log('this className:1:', this.className);
+      var classNameStr = this.className;
+      if (classNameStr.indexOf('active') === -1) {
+        this.className = classNameStr + ' active';
+        console.log('this className:2:', this.className);
+        _that.openHandWritingPanel();
+      } else {
+        this.className = classNameStr.replace(/\bactive\b/,'');;
+        console.log('this className:3:', this.className);
+        _that.removeHandWritingPanel();
+      }
+    });
   };
 
+  initMode = {
+    initClickMode : function (domObj) {
+      var divs = doc.getElementsByClassName(domObj.className);
+      for (var i = 0, len = divs.length; i < len; i++) {
+        divs[i].addEventListener('click', function () {
+          domObj.content = this.innerHTML;
+          objBee = new BeeClass(domObj);
+          objBee.addEventListener();
 
-  var initClickMode = function (domObj) {
-    var divs = doc.getElementsByClassName(domObj.className);
-    for (var i = 0; i < divs.length; i++) {
-      divs[i].addEventListener('click', function () {
-        domObj.content = this.innerHTML;
-        objBee = new BeeClass(domObj);
-        objBee.addEventListener();
 
-
-        //var s = window.getSelection(),
-        //  r = document.createRange(),
-        //  editorDiv = objBee.modal.querySelector('div#bee-editor-content');
-        //r.setStart(editorDiv, 0);
-        //r.setEnd(editorDiv, 0);
-        //s.removeAllRanges();
-        //s.addRange(r);
-      });
+          var s = window.getSelection(),
+            r = document.createRange(),
+            editorDiv = objBee.modal.querySelector('div#bee-editor-content');
+          r.setStart(editorDiv, 0);
+          r.setEnd(editorDiv, 0);
+          r.selectNodeContents(editorDiv);
+          r.collapse(false);
+          s.removeAllRanges();
+          s.addRange(r);
+        });
+      }
     }
-  };
+  }
+
 
   // Create namespaces
   root.bee = {
@@ -143,7 +182,7 @@
   bee.fly = function (initParams) {
     switch (initParams.type) {
       case 'click' :
-        initClickMode(initParams);
+        initMode.initClickMode(initParams);
         break;
     }
   };
