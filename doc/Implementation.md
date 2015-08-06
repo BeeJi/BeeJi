@@ -28,3 +28,14 @@ http://blog.csdn.net/yelbosh/article/details/7693236
 
 富文本编辑 实现
 http://www.cnblogs.com/wangfupeng1988/p/4175971.html
+
+
+
+# 插入的位置问题
+1. 默认进入页面，光标应该在编辑区的内容最后，需要考虑不同的浏览器会有区别
+firefox focus光标的位置很奇怪
+
+2. 
+
+
+插入图片、手写、画图、二维码等都需要在光标处插入，
