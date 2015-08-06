@@ -1,10 +1,9 @@
-/*! Licensed under MIT, https://github.com/gyf1/Bee */
+/*! Licensed under MIT, https://github.com/gyf1/bee */
 (function (root, doc) {
   'use strict';
 
   var BeeClass, objBee, utils = {}, htmlTemplates = {}, initMode = {};
   var selection = doc.getSelection();
-
   htmlTemplates = {
     getClickerModalHTML: function (options) {
       return [
@@ -52,6 +51,17 @@
     }
   };
 
+  // node.contains is not implemented in IE10/IE11
+  function containsNode(parent, child) {
+    if (parent === child) return true;
+    child = child.parentNode;
+    while (child) {
+      if (child === parent) return true;
+      child = child.parentNode;
+    }
+    return false;
+  }
+
   utils = {
     stopPropagation : function (e) {
       e.stopPropagation();
@@ -72,8 +82,40 @@
     divModal.innerHTML = htmlTemplates.getClickerModalHTML(config);
     doc.body.appendChild(divModal);
     this.modal = divModal;
+
+    this.editor = this.modal.querySelector('div#bee-editor-content');
   };
 
+  BeeClass.prototype.getRange = function() {
+    var editor = this.editor, range = selection.rangeCount && selection.getRangeAt(0);
+    if (!range) range = doc.createRange();
+    if (!containsNode(editor, range.commonAncestorContainer)) {
+      range.selectNodeContents(editor);
+      range.collapse(false);
+    }
+    return range;
+  };
+
+  BeeClass.prototype.setRange = function(range) {
+    range = range || this._range;
+    if (!range) {
+      range = this.getRange();
+      range.collapse(true); // set to end
+
+    }
+    try {
+      selection.removeAllRanges();
+      selection.addRange(range);
+    } catch (e) {/* IE throws error sometimes*/}
+    return this;
+  };
+
+  BeeClass.prototype.focus = function(focusStart) {
+    if (!focusStart) this.setRange();
+    this.editor.focus();
+    //this.config.editor.contentWindow.focus();
+    return this;
+  };
 
   BeeClass.prototype.openHandWritingPanel = function () {
     console.log('hand writing');
@@ -127,6 +169,7 @@
     this.modal.querySelector('div#bee-editor-content').addEventListener('blur', function (event) {
       if (selection.getRangeAt && selection.rangeCount) {
         _that._range = selection.getRangeAt(0);
+        console.log('_that._range::', _that._range);
       }
     });
 
@@ -158,20 +201,21 @@
           objBee = new BeeClass(domObj);
           objBee.addEventListener();
 
+          objBee.focus();
 
-          var s = window.getSelection(),
-            r = document.createRange(),
-            editorDiv = objBee.modal.querySelector('div#bee-editor-content');
-          r.setStart(editorDiv, 0);
-          r.setEnd(editorDiv, 0);
-          r.selectNodeContents(editorDiv);
-          r.collapse(false);
-          s.removeAllRanges();
-          s.addRange(r);
+          //var s = window.getSelection(),
+          //  r = document.createRange(),
+          //  editorDiv = objBee.modal.querySelector('div#bee-editor-content');
+          //r.setStart(editorDiv, 0);
+          //r.setEnd(editorDiv, 0);
+          //r.selectNodeContents(editorDiv);
+          //r.collapse(false);
+          //s.removeAllRanges();
+          //s.addRange(r);
         });
       }
     }
-  }
+  };
 
 
   // Create namespaces
