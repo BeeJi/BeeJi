@@ -1,3 +1,2 @@
-var selection = document.getSelection()
-//console.log('selection!!!::', selection);
+var selection = document.getSelection();
 export default selection;

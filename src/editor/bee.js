@@ -1,3 +1,6 @@
+import './bee.css';
+
+
 import view from '../common/view';
 import utility from '../common/utility';
 import domObj from '../common/dom';

@@ -1,3 +1,11 @@
+var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+var plugins = [
+  new ExtractTextPlugin('/[name].css'),
+  new webpack.optimize.UglifyJsPlugin({minimize: false})
+];
+
 module.exports = {
   entry: {
     bee: './src/index.js'
@@ -16,7 +24,13 @@ module.exports = {
           plugins: [ 'transform-runtime' ],
           presets: [ 'es2015', 'stage-0' ]
         }
-      }
+      },
+      { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader') }
     ]
-  }
+  },
+  postcss: function() {
+    return [require('precss')];
+  },
+
+  plugins: plugins
 };
