@@ -3,7 +3,7 @@ module.exports = {
     bee: './src/index.js'
   },
   output: {
-    path: './dist',
+    path: './build',
     filename: '[name].js'
   },
   module: {
@@ -11,7 +11,11 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
-        loader: 'babel'
+        loader: 'babel',
+        query: {
+          plugins: [ 'transform-runtime' ],
+          presets: [ 'es2015', 'stage-0' ]
+        }
       }
     ]
   }
