@@ -1,0 +1,29 @@
+{
+  "name": "bee",
+  "version": "1.0.0",
+  "description": "[Click event](http://gyf1.com/bee)",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GYF1/bee.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GYF1/bee/issues"
+  },
+  "homepage": "https://github.com/GYF1/bee#readme",
+  "devDependencies": {
+    "eslint": "^1.5.1",
+    "eslint-loader": "^1.0.0",
+    "babel-core": "^5.8.25",
+    "babel-loader": "^5.3.2",
+    "webpack": "^1.12.2"
+  }
+}

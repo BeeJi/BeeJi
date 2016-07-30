@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1, minimum-scale=1">
+  <title>Click Event to init Bee Editor</title>
+  <link rel="stylesheet" href="../css/bee.css">
+</head>
+<body>
+
+<div class="editor"><p>Edit on mobile is easy, click me</p></div>
+<div class="editor">Hello world, mobile rich text editor, click me</div>
+
+<script src="../dist/bee.js"></script>
+<script>
+  var objInit = {
+    className: 'editor',
+    type: 'click',
+    cancelText: '取消',
+    okText: '确定',
+    okCallback: function(data, idx) {
+      let divs = document.getElementsByClassName('editor');
+      divs[idx].innerHTML = data;
+
+      console.log('data::', data);
+      console.log('idx::', idx);
+    }
+  };
+  bee.fly(objInit);
+</script>
+</body>
+</html>

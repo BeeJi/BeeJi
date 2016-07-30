@@ -199,7 +199,6 @@ label.upload-label input[type="file"] {
   color: #333333;
 }
 
-
 .bee-dropdown-menu {
   display: none;
 }
@@ -207,8 +206,6 @@ label.upload-label input[type="file"] {
 .dropdown-toggle:active .bee-dropdown {
   display: block;
 }
-
-
 
 /*handwring panel*/
 .bee-handwriting-panel {
