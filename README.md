@@ -1,5 +1,5 @@
 # Demo
-[Click event](http://gyf1.com/bee)
+[Click event](http://gyf1.com/bee/demo/click)
 
 # Usage
 * bower install bee --save
@@ -10,7 +10,11 @@ var objInit = {
   className: 'editor',
   type: 'click',
   cancelText: '取消',
-  okText: '确定'
+  okText: '确定',
+  okCallback: function(data, idx) {
+    let divs = document.getElementsByClassName('editor');
+    divs[idx].innerHTML = data;
+  }
 };
 bee.fly(objInit);
 ```
