@@ -74,9 +74,13 @@
 	window.bee = bee;
 
 	// insert svg sprite
-	var range = document.createRange();
-	var frag = range.createContextualFragment(_svg2.default);
+	//var range = document.createRange();
+	//var frag = range.createContextualFragment(svg);
+	var frag = document.createElement('div');
+	frag.innerHTML = _svg2.default;
 	document.body.insertBefore(frag, document.body.childNodes[0]);
+	//console.log('document.body.childNodes[0]::', document.body.childNodes[0]);
+	//document.body.childNodes[0].insertAdjacentHTML('beforebegin', svg);
 
 /***/ },
 /* 1 */
