@@ -29,7 +29,7 @@ module.exports = {
     ]
   },
   postcss: function() {
-    return [require('precss')];
+    return [require('autoprefixer'), require('precss')];
   },
 
   plugins: plugins

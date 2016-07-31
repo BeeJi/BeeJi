@@ -1,4 +1,5 @@
 import './bee.css';
+import './svg.css';
 
 
 import view from '../common/view';
@@ -35,31 +36,77 @@ class Bee {
       utility.destroy(this.modal);
     });
 
-    this.modal.querySelector('div#bee-editor-content').addEventListener('blur', function() {
-      console.log('blur...');
+    this.modal.querySelector('div#bee-editor-content').addEventListener('blur', () => {
+      console.log('xxx::', selection);
       if (selection.getRangeAt && selection.rangeCount) {
-        domObj.range = selection.getRangeAt(0);
+        //domObj.range = selection.getRangeAt(0);
         //domObj.anchorNode = selection.anchorNode;
+
+        this.setRange(selection.getRangeAt(0));
       }
 
       //domObj.anchorNode = selection.anchorNode;
-      //console.log(domObj.anchorNode);
+      //console.log('12312#::', domObj.anchorNode);
+
+
     }, true);
 
     this.modal.querySelector('input.upload-image').addEventListener('change', function() {
       insertImage(this.files, this._range);
     });
 
-    this.modal.querySelector('li.handwriting').addEventListener('click', () => {
-      var classNameStr = this.className;
-      if (classNameStr.indexOf('active') === -1) {
-        this.className = classNameStr + ' active';
-        this.openHandWritingPanel();
-      } else {
-        this.className = classNameStr.replace(/\bactive\b/,'');
-        this.removeHandWritingPanel();
-      }
-    });
+    //this.modal.querySelector('li.handwriting').addEventListener('click', () => {
+    //  var classNameStr = this.className;
+    //  if (classNameStr.indexOf('active') === -1) {
+    //    this.className = classNameStr + ' active';
+    //    this.openHandWritingPanel();
+    //  } else {
+    //    this.className = classNameStr.replace(/\bactive\b/,'');
+    //    this.removeHandWritingPanel();
+    //  }
+    //});
+
+    let menuUnorderedList = this.modal.querySelector('li.unordered-list');
+    if (menuUnorderedList) {
+      menuUnorderedList.addEventListener('click', () => {
+        let currentRange = this.getRange();
+        let element2Transfer = currentRange.commonAncestorContainer.firstElementChild;
+        if (element2Transfer) {
+          currentRange.commonAncestorContainer.removeChild(currentRange.commonAncestorContainer.firstElementChild);
+          this.switchToListElement('ul', currentRange.commonAncestorContainer, element2Transfer);
+        } else {
+          let parentNode = currentRange.commonAncestorContainer.parentNode;
+          element2Transfer = currentRange.commonAncestorContainer;
+          parentNode.removeChild(currentRange.commonAncestorContainer);
+          this.switchToListElement('ul', parentNode, element2Transfer);
+        }
+      });
+    }
+
+    let menuOrderedList = this.modal.querySelector('li.ordered-list');
+    if (menuOrderedList) {
+      menuOrderedList.addEventListener('click', () => {
+        let currentRange = this.getRange();
+        let element2Transfer = currentRange.commonAncestorContainer.firstElementChild;
+        if (element2Transfer) {
+          currentRange.commonAncestorContainer.removeChild(currentRange.commonAncestorContainer.firstElementChild);
+          this.switchToListElement('ol', currentRange.commonAncestorContainer, element2Transfer);
+        } else {
+          let parentNode = currentRange.commonAncestorContainer.parentNode;
+          element2Transfer = currentRange.commonAncestorContainer;
+          parentNode.removeChild(currentRange.commonAncestorContainer);
+          this.switchToListElement('ol', parentNode, element2Transfer);
+        }
+      });
+    }
+  }
+
+  switchToListElement(type, appendTo, node2Append) {
+    let ulElement = document.createElement(type);
+    let liElement = document.createElement('li');
+    liElement.appendChild(node2Append);
+    ulElement.appendChild(liElement);
+    appendTo.appendChild(ulElement);
   }
 
   focus(focusStart) {
