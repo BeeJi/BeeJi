@@ -31,7 +31,7 @@
     cancelText: '取消',
     okText: '确定',
     okCallback: function(data, idx) {
-      let divs = document.getElementsByClassName('editor');
+      var divs = document.getElementsByClassName('editor');
       divs[idx].innerHTML = data;
 
       console.log('data::', data);
