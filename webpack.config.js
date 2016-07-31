@@ -3,7 +3,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var plugins = [
   new ExtractTextPlugin('/[name].css'),
-  new webpack.optimize.UglifyJsPlugin({minimize: false})
+  //new webpack.optimize.UglifyJsPlugin({minimize: false})
 ];
 
 module.exports = {

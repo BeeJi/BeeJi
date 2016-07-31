@@ -1,3 +1,4 @@
+require('vconsole/dist/vconsole.min.js');
 import init from './editor/init';
 import svg from './common/svg';
 
