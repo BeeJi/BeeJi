@@ -120,6 +120,15 @@ class Bee {
       });
     }
 
+    let font = this.modal.querySelector('.font');
+    if (font) {
+      font.addEventListener('click', () => {
+        //this.modal.querySelector('.bee-modal-footer').style.height = '300px';
+        this.modal.querySelector('.bee-modal-footer').classList.toggle('show-font-detail');
+        //this.modal.querySelector('.bee-modal-footer').style.lineHeight = 'normal';
+      });
+    }
+
   }
 
   switchToListElement(type, appendTo, node2Append) {

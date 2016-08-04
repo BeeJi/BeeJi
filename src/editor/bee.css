@@ -128,7 +128,9 @@
   color: #444;
   width: 100%;
 
-  ul {
+  transition: height 0.50s ease-in-out;
+
+  ul.bee-modal-footer-menu {
     list-style: none;
     margin: 0 auto;
     padding: 0;
@@ -150,6 +152,50 @@
         background: #CCC;
       }
     }
+  }
+
+  ul.bee-modal-footer-font {
+    background: #fff;
+    list-style: none;
+    margin: 0;
+    padding: 0 10px;
+
+    > li {
+      height: 50px;
+      line-height: 50px;
+      border-bottom: 1px solid #eee;
+
+      > ul {
+        list-style: none;
+        margin: 0 auto;
+        padding: 0;
+        font-size: 0;
+
+        > li {
+          display: inline-block;
+          text-align: center;
+          cursor: pointer;
+          font-size: 16px;
+          height: 50px;
+          line-height: 50px;
+        }
+      }
+      > ul.font-normal {
+        > li {
+          width: 20%;
+        }
+      }
+      > ul.font-align {
+        > li {
+          width: 33.33%;
+        }
+      }
+    }
+  }
+
+  &.show-font-detail {
+    height: 244px;
+    line-height: normal;
   }
 }
 

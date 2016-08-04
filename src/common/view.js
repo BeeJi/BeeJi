@@ -16,7 +16,7 @@ var view = {
           </div>
         </div>
         <div class="bee-modal-footer">
-          <ul>
+          <ul class="bee-modal-footer-menu">
             <li class="unordered-list">
               <svg class="icon icon-list2"><use xlink:href="#icon-list2"></use></svg>
             </li>
@@ -37,7 +37,7 @@ var view = {
                 </span>
               </label>
             </li>
-            <li>
+            <li class="font">
               <svg class="icon icon-text-color"><use xlink:href="#icon-text-color"></use></svg>
             </li>
             <!--<li class="handwriting">-->
@@ -54,6 +54,46 @@ var view = {
                 <!--<li>链接</li>-->
               <!--</ul>-->
             <!--</li>-->
+          </ul>
+          <ul class="bee-modal-footer-font">
+            <li>
+              <ul class="font-normal">
+                <li>
+                  <svg class="icon icon-bold"><use xlink:href="#icon-bold"></use></svg>
+                </li>
+                <li>
+                  <svg class="icon icon-italic"><use xlink:href="#icon-italic"></use></svg>
+                </li>
+                <li>
+                  <svg class="icon icon-underline"><use xlink:href="#icon-underline"></use></svg>
+                </li>
+                <li>
+                  <svg class="icon icon-strikethrough"><use xlink:href="#icon-strikethrough"></use></svg>
+                </li>
+                <li>
+                  <a>abc</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <ul class="font-align">
+                <li>
+                  <svg class="icon icon-paragraph-left"><use xlink:href="#icon-paragraph-left"></use></svg>
+                </li>
+                <li>
+                  <svg class="icon icon-paragraph-center"><use xlink:href="#icon-paragraph-center"></use></svg>
+                </li>
+                <li>
+                  <svg class="icon icon-paragraph-right"><use xlink:href="#icon-paragraph-right"></use></svg>
+                </li>
+              </ul>
+            </li>
+            <li>
+              sjalkdjals
+            </li>
+            <li>
+              adsasdas
+            </li>
           </ul>
         </div>
       </div>
