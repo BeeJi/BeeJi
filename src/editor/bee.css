@@ -1,6 +1,4 @@
 .bee-backdrop {
-  -webkit-transition: background-color 300ms ease-in-out;
-  -moz-transition: background-color 300ms ease-in-out;
   transition: background-color 300ms ease-in-out;
   position: fixed;
   top: 0;
@@ -8,7 +6,6 @@
   z-index: 10;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0);
   background-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -36,18 +33,8 @@
 
 
 .bee-modal .bee-modal-header {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -moz-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-transform: translate3d(0, 0, 0);
-  -moz-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   position: absolute;
   right: 0;
@@ -67,23 +54,17 @@
 }
 
 .bee-modal .bee-modal-header .bee-btn {
-  border-color: #b2b2b2;
   background-color: #f8f8f8;
   color: #444;
   position: relative;
   display: inline-block;
   margin: 0;
-  padding: 0 12px;
-  min-width: 52px;
-  min-height: 47px;
   border-width: 1px;
   border-style: solid;
   border-radius: 2px;
   vertical-align: top;
   text-align: center;
   text-overflow: ellipsis;
-  font-size: 16px;
-  line-height: 42px;
   cursor: pointer;
   z-index: 1;
   padding: 0 8px;
@@ -126,10 +107,11 @@
 
 
 .bee-modal .bee-modal-body .bee-modal-content {
-  color: #1e89e0;
+  color: #333;
   width: 100%;
   height: 100%;
   position: absolute;
+  padding: 5px;
 }
 
 .bee-modal .bee-modal-footer {
@@ -139,30 +121,38 @@
   border-bottom-width: 0;
   background-position: top;
   height: 44px;
-  line-height: 44px;
+  /*line-height: 44px;*/
   border-color: #b2b2b2;
   background-color: #f8f8f8;
   /*background-image: linear-gradient(0deg, #b2b2b2, #b2b2b2 50%, transparent 50%);*/
   color: #444;
   width: 100%;
+
+  ul {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    font-size: 0;
+
+    li {
+      display: inline-block;
+      width: 16.666666666%;
+      text-align: center;
+      cursor: pointer;
+      font-size: 16px;
+      height: 44px;
+      line-height: 44px;
+      /*position: relative;*/
+      vertical-align: middle;
+
+      &:hover,
+      &:active {
+        background: #CCC;
+      }
+    }
+  }
 }
 
-.bee-modal .bee-modal-footer ul {
-  list-style: none;
-  margin: 0 auto;
-  padding: 0;
-}
-
-.bee-modal .bee-modal-footer ul li {
-  display: inline-block;
-  width: 25%;
-  text-align: center;
-  cursor: pointer;
-}
-
-.bee-modal .bee-modal-footer ul li:hover, .bee-modal .bee-modal-footer ul li.active {
-  background: #CCC;
-}
 
 /*upload image button style*/
 label.upload-label input[type="file"] {
@@ -173,8 +163,6 @@ label.upload-label input[type="file"] {
 .upload-label {
   /*border: 2px solid #AAA;*/
   /*border-radius: 4px;*/
-  padding: 2px 5px;
-  margin: 2px;
   /*background: #DDD;*/
   display: inline-block;
   height: 44px;
