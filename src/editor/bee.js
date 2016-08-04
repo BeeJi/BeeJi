@@ -99,6 +99,27 @@ class Bee {
         }
       });
     }
+
+    let indenetDecrease = this.modal.querySelector('.indent-decrease');
+    if (indenetDecrease) {
+      indenetDecrease.addEventListener('click', () => {
+        let currentRange = this.getRange();
+        if (currentRange.commonAncestorContainer && currentRange.commonAncestorContainer.parentNode) {
+          currentRange.commonAncestorContainer.parentNode.style.textIndent = '2em';
+        }
+      });
+    }
+
+    let indentIncrease = this.modal.querySelector('.indent-increase');
+    if (indentIncrease) {
+      indentIncrease.addEventListener('click', () => {
+        let currentRange = this.getRange();
+        if (currentRange.commonAncestorContainer && currentRange.commonAncestorContainer.parentNode) {
+          currentRange.commonAncestorContainer.parentNode.style.textIndent = '0em';
+        }
+      });
+    }
+
   }
 
   switchToListElement(type, appendTo, node2Append) {

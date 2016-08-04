@@ -23,10 +23,10 @@ var view = {
             <li class="ordered-list">
               <svg class="icon icon-list-numbered"><use xlink:href="#icon-list-numbered"></use></svg>
             </li>
-            <li>
+            <li class="indent-decrease">
               <svg class="icon icon-indent-decrease"><use xlink:href="#icon-indent-decrease"></use></svg>
             </li>
-            <li>
+            <li class="indent-increase">
               <svg class="icon icon-indent-increase"><use xlink:href="#icon-indent-increase"></use></svg>
             </li>
             <li>

@@ -260,6 +260,26 @@
 	          }
 	        });
 	      }
+
+	      var indenetDecrease = this.modal.querySelector('.indent-decrease');
+	      if (indenetDecrease) {
+	        indenetDecrease.addEventListener('click', function () {
+	          var currentRange = _this.getRange();
+	          if (currentRange.commonAncestorContainer && currentRange.commonAncestorContainer.parentNode) {
+	            currentRange.commonAncestorContainer.parentNode.style.textIndent = '2em';
+	          }
+	        });
+	      }
+
+	      var indentIncrease = this.modal.querySelector('.indent-increase');
+	      if (indentIncrease) {
+	        indentIncrease.addEventListener('click', function () {
+	          var currentRange = _this.getRange();
+	          if (currentRange.commonAncestorContainer && currentRange.commonAncestorContainer.parentNode) {
+	            currentRange.commonAncestorContainer.parentNode.style.textIndent = '0em';
+	          }
+	        });
+	      }
 	    }
 	  }, {
 	    key: 'switchToListElement',
@@ -645,7 +665,7 @@
 	});
 	var view = {
 	  getClickerModalHTML: function getClickerModalHTML(options) {
-	    return "\n      <div class=\"bee-modal\">\n        <div class=\"bee-modal-header\">\n          <button class=\"bee-btn bee-btn-cancel\">\n            " + options.cancelText + "\n          </button>\n          <button class=\"bee-btn bee-btn-ok\">\n            " + options.okText + "\n          </button>\n        </div>\n        <div class=\"bee-modal-body\">\n          <div id=\"bee-editor-content\" class=\"bee-modal-content\" contentEditable=\"true\">\n            " + options.content + "\n          </div>\n        </div>\n        <div class=\"bee-modal-footer\">\n          <ul>\n            <li class=\"unordered-list\">\n              <svg class=\"icon icon-list2\"><use xlink:href=\"#icon-list2\"></use></svg>\n            </li>\n            <li class=\"ordered-list\">\n              <svg class=\"icon icon-list-numbered\"><use xlink:href=\"#icon-list-numbered\"></use></svg>\n            </li>\n            <li>\n              <svg class=\"icon icon-indent-decrease\"><use xlink:href=\"#icon-indent-decrease\"></use></svg>\n            </li>\n            <li>\n              <svg class=\"icon icon-indent-increase\"><use xlink:href=\"#icon-indent-increase\"></use></svg>\n            </li>\n            <li>\n              <label class=\"upload-label\">\n                <input class=\"upload-image\" type=\"file\"/>\n                <span>\n                  <svg class=\"icon icon-image\"><use xlink:href=\"#icon-image\"></use></svg>\n                </span>\n              </label>\n            </li>\n            <li>\n              <svg class=\"icon icon-text-color\"><use xlink:href=\"#icon-text-color\"></use></svg>\n            </li>\n            <!--<li class=\"handwriting\">-->\n              <!--<a>手写</a>-->\n            <!--</li>-->\n            <!--<li>-->\n              <!--<a>涂鸦</a>-->\n            <!--</li>-->\n            <!--<li data-toggle=\"dropdown\">-->\n              <!--<a>插入</a>-->\n              <!--<ul class=\"bee-dropdown-menu\">-->\n                <!--<li>二维码</li>-->\n                <!--<li>日期</li>-->\n                <!--<li>链接</li>-->\n              <!--</ul>-->\n            <!--</li>-->\n          </ul>\n        </div>\n      </div>\n    ";
+	    return "\n      <div class=\"bee-modal\">\n        <div class=\"bee-modal-header\">\n          <button class=\"bee-btn bee-btn-cancel\">\n            " + options.cancelText + "\n          </button>\n          <button class=\"bee-btn bee-btn-ok\">\n            " + options.okText + "\n          </button>\n        </div>\n        <div class=\"bee-modal-body\">\n          <div id=\"bee-editor-content\" class=\"bee-modal-content\" contentEditable=\"true\">\n            " + options.content + "\n          </div>\n        </div>\n        <div class=\"bee-modal-footer\">\n          <ul>\n            <li class=\"unordered-list\">\n              <svg class=\"icon icon-list2\"><use xlink:href=\"#icon-list2\"></use></svg>\n            </li>\n            <li class=\"ordered-list\">\n              <svg class=\"icon icon-list-numbered\"><use xlink:href=\"#icon-list-numbered\"></use></svg>\n            </li>\n            <li class=\"indent-decrease\">\n              <svg class=\"icon icon-indent-decrease\"><use xlink:href=\"#icon-indent-decrease\"></use></svg>\n            </li>\n            <li class=\"indent-increase\">\n              <svg class=\"icon icon-indent-increase\"><use xlink:href=\"#icon-indent-increase\"></use></svg>\n            </li>\n            <li>\n              <label class=\"upload-label\">\n                <input class=\"upload-image\" type=\"file\"/>\n                <span>\n                  <svg class=\"icon icon-image\"><use xlink:href=\"#icon-image\"></use></svg>\n                </span>\n              </label>\n            </li>\n            <li>\n              <svg class=\"icon icon-text-color\"><use xlink:href=\"#icon-text-color\"></use></svg>\n            </li>\n            <!--<li class=\"handwriting\">-->\n              <!--<a>手写</a>-->\n            <!--</li>-->\n            <!--<li>-->\n              <!--<a>涂鸦</a>-->\n            <!--</li>-->\n            <!--<li data-toggle=\"dropdown\">-->\n              <!--<a>插入</a>-->\n              <!--<ul class=\"bee-dropdown-menu\">-->\n                <!--<li>二维码</li>-->\n                <!--<li>日期</li>-->\n                <!--<li>链接</li>-->\n              <!--</ul>-->\n            <!--</li>-->\n          </ul>\n        </div>\n      </div>\n    ";
 	  },
 	  getHandWritingHTML: function getHandWritingHTML() {
 	    return "\n      <div class=\"bee-handwriting-panel\">\n        <canvas id=\"handwring-canvas\"></canvas>\n      </div>\n    ";
