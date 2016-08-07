@@ -163,81 +163,8 @@
   background: #CCC;
 }
 
-.bee-modal .bee-modal-footer ul.bee-modal-footer-font {
-  background: #fff;
-  list-style: none;
-  margin: 0;
-  padding: 0 10px;
-}
-
-.bee-modal .bee-modal-footer ul.bee-modal-footer-font > li {
-  height: 50px;
-  line-height: 50px;
-  border-bottom: 1px solid #eee;
-}
-
-.bee-modal .bee-modal-footer ul.bee-modal-footer-font > li > ul {
-  list-style: none;
-  margin: 0 auto;
-  padding: 0;
-  font-size: 0;
-}
-
-.bee-modal .bee-modal-footer ul.bee-modal-footer-font > li > ul > li {
-  display: inline-block;
-  text-align: center;
-  cursor: pointer;
-  font-size: 16px;
-  height: 50px;
-  line-height: 50px;
-}
-
-.bee-modal .bee-modal-footer ul.bee-modal-footer-font > li > ul.font-normal > li {
-  width: 20%;
-}
-
-.bee-modal .bee-modal-footer ul.bee-modal-footer-font > li > ul.font-align > li {
-  width: 33.33%;
-}
-
-.bee-modal .bee-modal-footer.show-font-detail {
-  height: 244px;
-  line-height: normal;
-}
 
 
-/*upload image button style*/
-label.upload-label input[type="file"] {
-  position: fixed;
-  top: -1000px;
-}
-
-.upload-label {
-  /*border: 2px solid #AAA;*/
-  /*border-radius: 4px;*/
-  /*background: #DDD;*/
-  display: inline-block;
-  height: 44px;
-  line-height: 44px;
-  padding: 0;
-  margin: 0;
-  width:100%;
-  cursor: pointer;
-}
-.upload-label:hover {
-  background: #CCC;
-}
-.upload-label:active {
-  background: #CCF;
-  background: #DDD;
-}
-.upload-label :invalid + span {
-  color: #A44;
-}
-.upload-label :valid + span {
-  /*color: #4A4;*/
-  color: #333333;
-}
 
 .bee-dropdown-menu {
   display: none;

@@ -1,7 +1,7 @@
 {
   "name": "bee",
   "version": "1.0.0",
-  "description": "[Click event](http://gyf1.com/bee)",
+  "description": "Mobile WYSIWYG, Mobile Rich Text Editor",
   "main": "index.js",
   "directories": {
     "doc": "doc"
@@ -13,8 +13,8 @@
     "type": "git",
     "url": "git+https://github.com/GYF1/bee.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "GYF1",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/GYF1/bee/issues"
   },
