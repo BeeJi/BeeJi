@@ -2,10 +2,10 @@
 import init from './editor/init';
 import svg from './common/svg';
 import PluginManager from './plugins/';
-import UnorderedList from './plugins/main-unordered-list';
-import OrderedList from './plugins/main-ordered-list';
-import IndentDecrease from './plugins/main-indent-decrease';
-import IndentIncrease from './plugins/main-indent-increase';
+import UnorderedList from './plugins/basic-unordered-list';
+import OrderedList from './plugins/basic-ordered-list';
+import IndentDecrease from './plugins/basic-indent-decrease';
+import IndentIncrease from './plugins/basic-indent-increase';
 import InsertImage from './plugins/insert-image';
 import Font from './plugins/font';
 
@@ -14,11 +14,6 @@ let bee = {
 };
 
 window.bee = bee;
-
-//bee.PluginManager = PluginManager;
-//bee.PluginManager.add('unordered-list', (editor) => {
-//  console.log('editor::', editor);
-//});
 
 bee.PluginManager = PluginManager();
 bee.PluginManager.addPlugin(UnorderedList);
@@ -35,7 +30,6 @@ bee.fly = function(initParams) {
       break;
   }
 };
-
 
 // insert svg sprite
 //var range = document.createRange();

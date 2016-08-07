@@ -58,21 +58,21 @@
 
 	var _plugins2 = _interopRequireDefault(_plugins);
 
-	var _mainUnorderedList = __webpack_require__(35);
+	var _basicUnorderedList = __webpack_require__(41);
 
-	var _mainUnorderedList2 = _interopRequireDefault(_mainUnorderedList);
+	var _basicUnorderedList2 = _interopRequireDefault(_basicUnorderedList);
 
-	var _mainOrderedList = __webpack_require__(36);
+	var _basicOrderedList = __webpack_require__(42);
 
-	var _mainOrderedList2 = _interopRequireDefault(_mainOrderedList);
+	var _basicOrderedList2 = _interopRequireDefault(_basicOrderedList);
 
-	var _mainIndentDecrease = __webpack_require__(37);
+	var _basicIndentDecrease = __webpack_require__(43);
 
-	var _mainIndentDecrease2 = _interopRequireDefault(_mainIndentDecrease);
+	var _basicIndentDecrease2 = _interopRequireDefault(_basicIndentDecrease);
 
-	var _mainIndentIncrease = __webpack_require__(38);
+	var _basicIndentIncrease = __webpack_require__(44);
 
-	var _mainIndentIncrease2 = _interopRequireDefault(_mainIndentIncrease);
+	var _basicIndentIncrease2 = _interopRequireDefault(_basicIndentIncrease);
 
 	var _insertImage = __webpack_require__(39);
 
@@ -91,17 +91,12 @@
 
 	window.bee = bee;
 
-	//bee.PluginManager = PluginManager;
-	//bee.PluginManager.add('unordered-list', (editor) => {
-	//  console.log('editor::', editor);
-	//});
-
 	bee.PluginManager = (0, _plugins2.default)();
-	bee.PluginManager.addPlugin(_mainUnorderedList2.default);
+	bee.PluginManager.addPlugin(_basicUnorderedList2.default);
 	bee.PluginManager.addPlugin(_insertImage2.default);
-	bee.PluginManager.addPlugin(_mainOrderedList2.default);
-	bee.PluginManager.addPlugin(_mainIndentDecrease2.default);
-	bee.PluginManager.addPlugin(_mainIndentIncrease2.default);
+	bee.PluginManager.addPlugin(_basicOrderedList2.default);
+	bee.PluginManager.addPlugin(_basicIndentDecrease2.default);
+	bee.PluginManager.addPlugin(_basicIndentIncrease2.default);
 	bee.PluginManager.addPlugin(_font2.default);
 
 	bee.fly = function (initParams) {
@@ -799,140 +794,10 @@
 	exports.default = PluginsManager;
 
 /***/ },
-/* 35 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	function switchToListElement(type, appendTo, node2Append) {
-	  var ulElement = document.createElement(type);
-	  var liElement = document.createElement('li');
-	  liElement.appendChild(node2Append);
-	  ulElement.appendChild(liElement);
-	  appendTo.appendChild(ulElement);
-	}
-
-	var UnorderedList = {
-	  className: 'unordered-list',
-	  eventType: 'click',
-	  icon: 'icon-list2',
-	  eventSelector: 'li.unordered-list',
-	  eventCallback: function eventCallback(editor) {
-	    return function (e) {
-	      var currentRange = editor.getRange();
-	      var element2Transfer = currentRange.commonAncestorContainer.firstElementChild;
-	      if (element2Transfer) {
-	        currentRange.commonAncestorContainer.removeChild(currentRange.commonAncestorContainer.firstElementChild);
-	        switchToListElement('ul', currentRange.commonAncestorContainer, element2Transfer);
-	      } else {
-	        var parentNode = currentRange.commonAncestorContainer.parentNode;
-	        element2Transfer = currentRange.commonAncestorContainer;
-	        parentNode.removeChild(currentRange.commonAncestorContainer);
-	        switchToListElement('ul', parentNode, element2Transfer);
-	      }
-	    };
-	  }
-	};
-
-	exports.default = UnorderedList;
-
-/***/ },
-/* 36 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	function switchToListElement(type, appendTo, node2Append) {
-	  var ulElement = document.createElement(type);
-	  var liElement = document.createElement('li');
-	  liElement.appendChild(node2Append);
-	  ulElement.appendChild(liElement);
-	  appendTo.appendChild(ulElement);
-	}
-
-	var OrderedList = {
-	  className: 'ordered-list',
-	  eventType: 'click',
-	  icon: 'icon-list-numbered',
-	  eventSelector: 'li.ordered-list',
-	  eventCallback: function eventCallback(editor) {
-	    return function (e) {
-	      var currentRange = editor.getRange();
-	      var element2Transfer = currentRange.commonAncestorContainer.firstElementChild;
-	      if (element2Transfer) {
-	        currentRange.commonAncestorContainer.removeChild(currentRange.commonAncestorContainer.firstElementChild);
-	        switchToListElement('ol', currentRange.commonAncestorContainer, element2Transfer);
-	      } else {
-	        var parentNode = currentRange.commonAncestorContainer.parentNode;
-	        element2Transfer = currentRange.commonAncestorContainer;
-	        parentNode.removeChild(currentRange.commonAncestorContainer);
-	        switchToListElement('ol', parentNode, element2Transfer);
-	      }
-	    };
-	  }
-	};
-
-	exports.default = OrderedList;
-
-/***/ },
-/* 37 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var IndentDecrease = {
-	  className: 'indent-decrease',
-	  eventType: 'click',
-	  icon: 'icon-indent-decrease',
-	  eventSelector: '.indent-decrease',
-	  eventCallback: function eventCallback(editor) {
-	    return function (e) {
-	      var currentRange = editor.getRange();
-	      if (currentRange.commonAncestorContainer && currentRange.commonAncestorContainer.parentNode) {
-	        currentRange.commonAncestorContainer.parentNode.style.textIndent = '0em';
-	      }
-	    };
-	  }
-	};
-
-	exports.default = IndentDecrease;
-
-/***/ },
-/* 38 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var IndentIncrease = {
-	  className: 'indent-increase',
-	  eventType: 'click',
-	  icon: 'icon-indent-increase',
-	  eventSelector: '.indent-increase',
-	  eventCallback: function eventCallback(editor) {
-	    return function (e) {
-	      var currentRange = editor.getRange();
-	      if (currentRange.commonAncestorContainer && currentRange.commonAncestorContainer.parentNode) {
-	        currentRange.commonAncestorContainer.parentNode.style.textIndent = '2em';
-	      }
-	    };
-	  }
-	};
-
-	exports.default = IndentIncrease;
-
-/***/ },
+/* 35 */,
+/* 36 */,
+/* 37 */,
+/* 38 */,
 /* 39 */
 /***/ function(module, exports) {
 
@@ -1005,6 +870,140 @@
 	};
 
 	exports.default = Font;
+
+/***/ },
+/* 41 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	function switchToListElement(type, appendTo, node2Append) {
+	  var ulElement = document.createElement(type);
+	  var liElement = document.createElement('li');
+	  liElement.appendChild(node2Append);
+	  ulElement.appendChild(liElement);
+	  appendTo.appendChild(ulElement);
+	}
+
+	var UnorderedList = {
+	  className: 'unordered-list',
+	  eventType: 'click',
+	  icon: 'icon-list2',
+	  eventSelector: 'li.unordered-list',
+	  eventCallback: function eventCallback(editor) {
+	    return function (e) {
+	      var currentRange = editor.getRange();
+	      var element2Transfer = currentRange.commonAncestorContainer.firstElementChild;
+	      if (element2Transfer) {
+	        currentRange.commonAncestorContainer.removeChild(currentRange.commonAncestorContainer.firstElementChild);
+	        switchToListElement('ul', currentRange.commonAncestorContainer, element2Transfer);
+	      } else {
+	        var parentNode = currentRange.commonAncestorContainer.parentNode;
+	        element2Transfer = currentRange.commonAncestorContainer;
+	        parentNode.removeChild(currentRange.commonAncestorContainer);
+	        switchToListElement('ul', parentNode, element2Transfer);
+	      }
+	    };
+	  }
+	};
+
+	exports.default = UnorderedList;
+
+/***/ },
+/* 42 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	function switchToListElement(type, appendTo, node2Append) {
+	  var ulElement = document.createElement(type);
+	  var liElement = document.createElement('li');
+	  liElement.appendChild(node2Append);
+	  ulElement.appendChild(liElement);
+	  appendTo.appendChild(ulElement);
+	}
+
+	var OrderedList = {
+	  className: 'ordered-list',
+	  eventType: 'click',
+	  icon: 'icon-list-numbered',
+	  eventSelector: 'li.ordered-list',
+	  eventCallback: function eventCallback(editor) {
+	    return function (e) {
+	      var currentRange = editor.getRange();
+	      var element2Transfer = currentRange.commonAncestorContainer.firstElementChild;
+	      if (element2Transfer) {
+	        currentRange.commonAncestorContainer.removeChild(currentRange.commonAncestorContainer.firstElementChild);
+	        switchToListElement('ol', currentRange.commonAncestorContainer, element2Transfer);
+	      } else {
+	        var parentNode = currentRange.commonAncestorContainer.parentNode;
+	        element2Transfer = currentRange.commonAncestorContainer;
+	        parentNode.removeChild(currentRange.commonAncestorContainer);
+	        switchToListElement('ol', parentNode, element2Transfer);
+	      }
+	    };
+	  }
+	};
+
+	exports.default = OrderedList;
+
+/***/ },
+/* 43 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var IndentDecrease = {
+	  className: 'indent-decrease',
+	  eventType: 'click',
+	  icon: 'icon-indent-decrease',
+	  eventSelector: '.indent-decrease',
+	  eventCallback: function eventCallback(editor) {
+	    return function (e) {
+	      var currentRange = editor.getRange();
+	      if (currentRange.commonAncestorContainer && currentRange.commonAncestorContainer.parentNode) {
+	        currentRange.commonAncestorContainer.parentNode.style.textIndent = '0em';
+	      }
+	    };
+	  }
+	};
+
+	exports.default = IndentDecrease;
+
+/***/ },
+/* 44 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var IndentIncrease = {
+	  className: 'indent-increase',
+	  eventType: 'click',
+	  icon: 'icon-indent-increase',
+	  eventSelector: '.indent-increase',
+	  eventCallback: function eventCallback(editor) {
+	    return function (e) {
+	      var currentRange = editor.getRange();
+	      if (currentRange.commonAncestorContainer && currentRange.commonAncestorContainer.parentNode) {
+	        currentRange.commonAncestorContainer.parentNode.style.textIndent = '2em';
+	      }
+	    };
+	  }
+	};
+
+	exports.default = IndentIncrease;
 
 /***/ }
 /******/ ]);
