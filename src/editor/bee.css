@@ -128,7 +128,9 @@
   color: #444;
   width: 100%;
 
-  ul {
+  transition: height 0.50s ease-in-out;
+
+  ul.bee-modal-footer-menu {
     list-style: none;
     margin: 0 auto;
     padding: 0;
@@ -154,38 +156,7 @@
 }
 
 
-/*upload image button style*/
-label.upload-label input[type="file"] {
-  position: fixed;
-  top: -1000px;
-}
 
-.upload-label {
-  /*border: 2px solid #AAA;*/
-  /*border-radius: 4px;*/
-  /*background: #DDD;*/
-  display: inline-block;
-  height: 44px;
-  line-height: 44px;
-  padding: 0;
-  margin: 0;
-  width:100%;
-  cursor: pointer;
-}
-.upload-label:hover {
-  background: #CCC;
-}
-.upload-label:active {
-  background: #CCF;
-  background: #DDD;
-}
-.upload-label :invalid + span {
-  color: #A44;
-}
-.upload-label :valid + span {
-  /*color: #4A4;*/
-  color: #333333;
-}
 
 .bee-dropdown-menu {
   display: none;
