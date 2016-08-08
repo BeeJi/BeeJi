@@ -19,19 +19,6 @@
   background-color: #fff;
 }
 
-@media (min-width: 680px) {
-  .bee-modal {
-    top: 20%;
-    right: 20%;
-    bottom: 20%;
-    left: 20%;
-    overflow: visible;
-    min-height: 240px;
-    width: 60%;
-  }
-}
-
-
 .bee-modal .bee-modal-header {
   display: flex;
   transform: translate3d(0, 0, 0);
@@ -154,9 +141,6 @@
     }
   }
 }
-
-
-
 
 .bee-dropdown-menu {
   display: none;

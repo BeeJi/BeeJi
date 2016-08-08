@@ -108,14 +108,10 @@
 	};
 
 	// insert svg sprite
-	//var range = document.createRange();
-	//var frag = range.createContextualFragment(svg);
 	var frag = document.createElement('div');
 	frag.className = 'svg-sprite';
 	frag.innerHTML = _svg2.default;
 	document.body.insertBefore(frag, document.body.childNodes[0]);
-	//console.log('document.body.childNodes[0]::', document.body.childNodes[0]);
-	//document.body.childNodes[0].insertAdjacentHTML('beforebegin', svg);
 
 /***/ },
 /* 1 */
@@ -752,29 +748,6 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	//class Plugin {
-	//  constructor(config) {
-	//    //let { text, icon, template, onclick, editor } = config;
-	//    //
-	//    //this.icon = icon;
-	//    //this.onclick = onlick;
-	//
-	//  }
-	//
-	//  addButton(test) {
-	//    console.log('test::', test);
-	//  }
-	//}
-	//
-	//
-	//export default {
-	//  add: (config, callback) => {
-	//    var plugin = new Plugin(config);
-	//    var editor = {a: 'hi'};
-	//    callback(editor);
-	//  }
-	//};
-
 	var PluginsManager = function PluginsManager() {
 	  var plugins = [];
 
