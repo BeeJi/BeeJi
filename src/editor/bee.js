@@ -35,6 +35,11 @@ class Bee {
         li.innerHTML = plugin.template;
       }
 
+      if (plugin.svg) {
+        var svgSprite = document.body.querySelector('.svg-sprite symbol');
+        svgSprite.insertAdjacentHTML('beforebegin', plugin.svg);
+      }
+
       docfrag.appendChild(li);
 
       let target = docfrag.querySelector(plugin.eventSelector);
@@ -91,16 +96,6 @@ class Bee {
     //    this.removeHandWritingPanel();
     //  }
     //});
-
-    //let font = this.modal.querySelector('.font');
-    //if (font) {
-    //  font.addEventListener('click', () => {
-    //    //this.modal.querySelector('.bee-modal-footer').style.height = '300px';
-    //    this.modal.querySelector('.bee-modal-footer').classList.toggle('show-font-detail');
-    //    //this.modal.querySelector('.bee-modal-footer').style.lineHeight = 'normal';
-    //  });
-    //}
-
   }
 
   focus(focusStart) {

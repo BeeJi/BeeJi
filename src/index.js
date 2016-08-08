@@ -35,6 +35,7 @@ bee.fly = function(initParams) {
 //var range = document.createRange();
 //var frag = range.createContextualFragment(svg);
 var frag = document.createElement('div');
+frag.className = 'svg-sprite';
 frag.innerHTML = svg;
 document.body.insertBefore(frag, document.body.childNodes[0]);
 //console.log('document.body.childNodes[0]::', document.body.childNodes[0]);

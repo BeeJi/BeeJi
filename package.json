@@ -1,7 +1,7 @@
 {
-  "name": "bee",
-  "version": "1.0.0",
-  "description": "Mobile WYSIWYG, Mobile Rich Text Editor",
+  "name": "beeji",
+  "version": "0.0.1",
+  "description": "Mobile Rich Text Editor, Mobile WYSIWYG",
   "main": "index.js",
   "directories": {
     "doc": "doc"
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GYF1/bee.git"
+    "url": "git+https://github.com/BeeJi/BeeJi.git"
   },
   "author": "GYF1",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/GYF1/bee/issues"
+    "url": "https://github.com/BeeJi/BeeJi/issues"
   },
-  "homepage": "https://github.com/GYF1/bee#readme",
+  "homepage": "https://github.com/BeeJi/BeeJi#readme",
   "devDependencies": {
     "autoprefixer": "^6.3.7",
     "babel-core": "^6.11.4",

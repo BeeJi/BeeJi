@@ -1,3 +1,1 @@
-/**
- * Created by guoyinfeng on 16/8/7.
- */
+// 上传图片到服务器
