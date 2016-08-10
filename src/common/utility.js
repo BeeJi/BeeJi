@@ -3,11 +3,7 @@ var utility = {
     e.stopPropagation();
   },
   destroy: function(node) {
-    //objBee = null;
     document.body.removeChild(node);
-  },
-  extend: function(src, dest) {
-
   },
   containsNode: function(parent, child) {
     if (parent === child) return true;

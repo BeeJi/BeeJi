@@ -15,9 +15,10 @@
 <script>
   var objInit = {
     className: 'editor',
+    plugins: ['unorderedlist', 'orderedlist', 'indentdecrease', 'indentincrease', 'insertimage', 'font'],
     type: 'click',
-    cancelText: '取消',
-    okText: '确定',
+    cancelText: 'Cancel',
+    okText: 'OK',
     okCallback: function(data, idx) {
       var divs = document.getElementsByClassName('editor');
       divs[idx].innerHTML = data;

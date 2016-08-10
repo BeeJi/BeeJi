@@ -1,16 +1,31 @@
 //require('vconsole/dist/vconsole.min.js');
-import init from './editor/init';
 import svg from './common/svg';
-import PluginManager from './plugins/';
+import PluginManager from './plugins-manager';
 import UnorderedList from './plugins/basic-unordered-list';
 import OrderedList from './plugins/basic-ordered-list';
 import IndentDecrease from './plugins/basic-indent-decrease';
 import IndentIncrease from './plugins/basic-indent-increase';
 import InsertImage from './plugins/insert-image';
 import Font from './plugins/font';
+import Bee from './editor/bee.js';
 
 let bee = {
   version: '0.0.1'
+};
+
+const init = {
+  clickMode: (domObj) => {
+    let divs = document.getElementsByClassName(domObj.className);
+    for (let i = 0, len = divs.length; i < len; i++) {
+      divs[i].addEventListener('click', function() {
+        domObj.content = this.innerHTML;
+        domObj.index = i;
+        let objBee = new Bee(domObj);
+        objBee.addEventListener();
+        objBee.focus();
+      });
+    }
+  }
 };
 
 window.bee = bee;
@@ -22,6 +37,8 @@ bee.PluginManager.addPlugin(OrderedList);
 bee.PluginManager.addPlugin(IndentDecrease);
 bee.PluginManager.addPlugin(IndentIncrease);
 bee.PluginManager.addPlugin(Font);
+
+
 
 bee.fly = function(initParams) {
   switch (initParams.type) {

@@ -3,8 +3,8 @@ import './svg.css';
 
 import view from '../common/view';
 import utility from '../common/utility';
-import domObj from '../common/dom';
-import selection from '../dom/selection';
+
+let selection = document.getSelection();
 
 class Bee {
   constructor(config) {
@@ -72,17 +72,9 @@ class Bee {
     });
 
     this.modal.querySelector('div#bee-editor-content').addEventListener('blur', () => {
-      console.log('xxx::', selection);
       if (selection.getRangeAt && selection.rangeCount) {
-        //domObj.range = selection.getRangeAt(0);
-        //domObj.anchorNode = selection.anchorNode;
-
         this.setRange(selection.getRangeAt(0));
       }
-
-      //domObj.anchorNode = selection.anchorNode;
-      //console.log('12312#::', domObj.anchorNode);
-
     }, true);
 
 
