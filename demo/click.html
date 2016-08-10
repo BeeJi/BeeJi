@@ -3,19 +3,19 @@
 <head lang="en">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1, minimum-scale=1">
-  <title>Click Event to init Bee Editor</title>
-  <link rel="stylesheet" href="../build/bee.css">
+  <title>Click Event to init BeeJi Editor</title>
+  <link rel="stylesheet" href="../build/beeji.css">
 </head>
 <body>
 
 <div class="editor"><p>Edit on mobile is easy, click me</p></div>
 <div class="editor">Hello world, mobile rich text editor, click me</div>
 
-<script src="../build/bee.js"></script>
+<script src="../build/beeji.js"></script>
 <script>
   var objInit = {
     className: 'editor',
-    plugins: ['unorderedlist', 'orderedlist', 'indentdecrease', 'indentincrease', 'insertimage', 'font'],
+    plugins: ['font', 'orderedlist', 'unorderedlist', 'indentdecrease', 'indentincrease', 'insertimage'],
     type: 'click',
     cancelText: 'Cancel',
     okText: 'OK',
@@ -28,7 +28,7 @@
     }
   };
 
-  bee.fly(objInit);
+  beeji.fly(objInit);
 </script>
 </body>
 </html>

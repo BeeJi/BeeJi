@@ -1,15 +1,22 @@
 //require('vconsole/dist/vconsole.min.js');
-import svg from './common/svg';
+import { svgSpriteContainer } from './common/templates';
 import PluginManager from './plugins-manager';
 import UnorderedList from './plugins/basic-unordered-list';
 import OrderedList from './plugins/basic-ordered-list';
 import IndentDecrease from './plugins/basic-indent-decrease';
 import IndentIncrease from './plugins/basic-indent-increase';
+import Bold from './plugins/basic-bold';
+import Italic from './plugins/basic-italic';
+import Strikethrough from './plugins/basic-strikethrough';
+import Underline from './plugins/basic-underline';
+import ParagraphCenter from './plugins/basic-paragraph-center';
+import ParagraphLeft from './plugins/basic-paragraph-left';
+import ParagraphRight from './plugins/basic-paragraph-right';
 import InsertImage from './plugins/insert-image';
-import Font from './plugins/font';
-import Bee from './editor/bee.js';
+import Font from './plugins/combine-font';
+import Editor from './editor/editor.js';
 
-let bee = {
+let beeji = {
   version: '0.0.1'
 };
 
@@ -20,7 +27,7 @@ const init = {
       divs[i].addEventListener('click', function() {
         domObj.content = this.innerHTML;
         domObj.index = i;
-        let objBee = new Bee(domObj);
+        let objBee = new Editor(domObj);
         objBee.addEventListener();
         objBee.focus();
       });
@@ -28,19 +35,24 @@ const init = {
   }
 };
 
-window.bee = bee;
+window.beeji = beeji;
 
-bee.PluginManager = PluginManager();
-bee.PluginManager.addPlugin(UnorderedList);
-bee.PluginManager.addPlugin(InsertImage);
-bee.PluginManager.addPlugin(OrderedList);
-bee.PluginManager.addPlugin(IndentDecrease);
-bee.PluginManager.addPlugin(IndentIncrease);
-bee.PluginManager.addPlugin(Font);
+beeji.PluginManager = PluginManager();
+beeji.PluginManager.addPlugin('unorderedlist', UnorderedList);
+beeji.PluginManager.addPlugin('insertimage', InsertImage);
+beeji.PluginManager.addPlugin('orderedlist', OrderedList);
+beeji.PluginManager.addPlugin('indentdecrease', IndentDecrease);
+beeji.PluginManager.addPlugin('indentincrease', IndentIncrease);
+beeji.PluginManager.addPlugin('bold', Bold);
+beeji.PluginManager.addPlugin('italic', Italic);
+beeji.PluginManager.addPlugin('strikethrough', Strikethrough);
+beeji.PluginManager.addPlugin('underline', Underline);
+beeji.PluginManager.addPlugin('paragraphcenter', ParagraphCenter);
+beeji.PluginManager.addPlugin('paragraphleft', ParagraphLeft);
+beeji.PluginManager.addPlugin('paragraphright', ParagraphRight);
+beeji.PluginManager.addPlugin('font', Font);
 
-
-
-bee.fly = function(initParams) {
+beeji.fly = function(initParams) {
   switch (initParams.type) {
     case 'click' :
       init.clickMode(initParams);
@@ -51,5 +63,5 @@ bee.fly = function(initParams) {
 // insert svg sprite
 var frag = document.createElement('div');
 frag.className = 'svg-sprite';
-frag.innerHTML = svg;
+frag.innerHTML = svgSpriteContainer;
 document.body.insertBefore(frag, document.body.childNodes[0]);

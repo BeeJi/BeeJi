@@ -1,12 +1,18 @@
 var PluginsManager = function() {
-  var plugins = [];
+  var plugins = {};
 
   return {
-    getPlugins: function() {
+    getPlugin: function(name) {
+      return plugins[name];
+    },
+    addPlugin: function(name, plugin) {
+      plugins[name] = plugin;
+    },
+    gettotalPlugins: function() {
       return plugins;
     },
-    addPlugin: function(plugin) {
-      plugins.push(plugin);
+    getPluginsCount: function() {
+      return Object.keys(plugins).length;
     }
   };
 };

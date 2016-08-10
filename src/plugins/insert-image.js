@@ -44,6 +44,7 @@ var insertImage = function(files, range) {
 };
 
 var InsetImage = {
+  className: 'upload-image',
   stylesheet: style,
   eventSelector: 'input.upload-image',
   eventType: 'change',
