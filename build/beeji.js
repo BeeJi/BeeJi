@@ -1061,8 +1061,10 @@
 	  eventType: 'click',
 	  icon: 'icon-text-color',
 	  eventSelector: '.font',
-	  plugins: [['bold', 'italic', 'underline', 'strikethrough'], ['paragraphleft', 'paragraphcenter', 'paragraphright'], ['unorderedlist'], ['insertimage']],
-	  toggleClass: 'show-font-detail',
+	  subMenu: {
+	    toggleClass: 'show-font-detail',
+	    plugins: [['bold', 'italic', 'underline', 'strikethrough'], ['paragraphleft', 'paragraphcenter', 'paragraphright'], ['unorderedlist'], ['insertimage']]
+	  },
 	  svg: '\n    <symbol id="icon-text-color" viewBox="0 0 32 32">\n      <path class="path1" d="M10.063 26l1.8-6h8.274l1.8 6h3.551l-6-20h-6.976l-6 20h3.551zM14.863 10h2.274l1.8 6h-5.874l1.8-6z"></path>\n    </symbol>\n  ',
 	  eventCallback: function eventCallback(editor) {
 	    return function (e) {
@@ -1144,7 +1146,7 @@
 	        if (plugin.svg) _this._insertSvgSymbol(plugin.svg);
 	        if (plugin.eventSelector && plugin.eventType && plugin.eventCallback) _this._listenPluginEvent(docfrag, plugin);
 	        if (plugin.stylesheet) _this._insertStylesheet(plugin.stylesheet);
-	        if (plugin.plugins) _this.generateSubPlugins(plugin.plugins);
+	        if (plugin.plugins) _this._generateSubMenus(plugin.plugins);
 	      });
 
 	      var footMenuList = this.modal.querySelector('ul.bee-modal-footer-menu');
@@ -1156,15 +1158,22 @@
 	      }
 	    }
 	  }, {
-	    key: 'generateSubPlugins',
-	    value: function generateSubPlugins(plugins) {
+	    key: '_generateSubMenus',
+	    value: function _generateSubMenus(subMenus) {
 	      var _this2 = this;
 
-	      var docfrag = document.createDocumentFragment();
+	      var plugins = subMenus.plugins;
+	      var subMenuHeight = plugins.length * 50;
+	      var subMenuItem = document.createElement('ul');
+	      subMenuItem.className = subMenus.toggleClass;
+	      subMenuItem.style.height = subMenuHeight + 'px';
+
 	      plugins.forEach(function (pluginLine) {
-	        var ulElement = document.createElement('ul');
-	        ulElement.className = 'sub-menu';
-	        console.log(pluginLine);
+	        var pluginLineLiElement = document.createElement('li');
+	        pluginLineLiElement.className = 'sub-menu';
+
+	        var subMenuListElement = document.createElement('ul');
+
 	        var defaultMenuItemWidth = 100 / pluginLine.length;
 	        pluginLine.forEach(function (pluginKey) {
 	          var plugin = _this2.pluginManager.getPlugin(pluginKey);
@@ -1173,17 +1182,19 @@
 	            return;
 	          }
 
-	          ulElement.appendChild(_this2._pluginToLiElement(plugin, defaultMenuItemWidth));
+	          subMenuListElement.appendChild(_this2._pluginToLiElement(plugin, defaultMenuItemWidth));
 	          if (plugin.svg) _this2._insertSvgSymbol(plugin.svg);
-	          if (plugin.eventSelector && plugin.eventType && plugin.eventCallback) _this2._listenPluginEvent(ulElement, plugin);
+	          if (plugin.eventSelector && plugin.eventType && plugin.eventCallback) _this2._listenPluginEvent(subMenuListElement, plugin);
 	          if (plugin.stylesheet) _this2._insertStylesheet(plugin.stylesheet);
 	        });
 
-	        docfrag.appendChild(ulElement);
+	        pluginLineLiElement.appendChild(subMenuListElement);
+
+	        subMenuItem.appendChild(pluginLineLiElement);
 	      });
 
 	      var footMenuList = this.modal.querySelector('.bee-modal-footer');
-	      footMenuList.appendChild(docfrag);
+	      footMenuList.appendChild(subMenuItem);
 	    }
 	  }, {
 	    key: '_insertStylesheet',
@@ -1268,7 +1279,6 @@
 	  }, {
 	    key: 'setRange',
 	    value: function setRange(range) {
-	      range = range || this._range;
 	      if (!range) {
 	        range = this.getRange();
 	        range.collapse(false); // set to end

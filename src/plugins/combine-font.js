@@ -48,13 +48,15 @@ var Font = {
   eventType: 'click',
   icon: 'icon-text-color',
   eventSelector: '.font',
-  plugins: [
-    ['bold', 'italic', 'underline', 'strikethrough'],
-    ['paragraphleft', 'paragraphcenter', 'paragraphright'],
-    ['unorderedlist'],
-    ['insertimage']
-  ],
-  toggleClass: 'show-font-detail',
+  subMenu: {
+    toggleClass: 'show-font-detail',
+    plugins: [
+      ['bold', 'italic', 'underline', 'strikethrough'],
+      ['paragraphleft', 'paragraphcenter', 'paragraphright'],
+      ['unorderedlist'],
+      ['insertimage']
+    ]
+  },
   svg: `
     <symbol id="icon-text-color" viewBox="0 0 32 32">
       <path class="path1" d="M10.063 26l1.8-6h8.274l1.8 6h3.551l-6-20h-6.976l-6 20h3.551zM14.863 10h2.274l1.8 6h-5.874l1.8-6z"></path>

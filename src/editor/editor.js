@@ -40,7 +40,7 @@ class Editor {
       if (plugin.svg) this._insertSvgSymbol(plugin.svg);
       if (plugin.eventSelector && plugin.eventType && plugin.eventCallback) this._listenPluginEvent(docfrag, plugin);
       if (plugin.stylesheet) this._insertStylesheet(plugin.stylesheet);
-      if (plugin.plugins) this.generateSubPlugins(plugin.plugins);
+      if (plugin.plugins) this._generateSubMenus(plugin.plugins);
     });
 
     var footMenuList = this.modal.querySelector('ul.bee-modal-footer-menu');
@@ -52,12 +52,19 @@ class Editor {
     }
   }
 
-  generateSubPlugins(plugins) {
-    let docfrag = document.createDocumentFragment();
+  _generateSubMenus(subMenus) {
+    let plugins = subMenus.plugins;
+    let subMenuHeight = plugins.length * 50;
+    let subMenuItem = document.createElement('ul');
+    subMenuItem.className = subMenus.toggleClass;
+    subMenuItem.style.height = subMenuHeight + 'px';
+
     plugins.forEach((pluginLine) => {
-      let ulElement = document.createElement('ul');
-      ulElement.className = 'sub-menu';
-      console.log(pluginLine);
+      let pluginLineLiElement = document.createElement('li');
+      pluginLineLiElement.className = 'sub-menu';
+
+      let subMenuListElement = document.createElement('ul');
+
       let defaultMenuItemWidth = 100 / pluginLine.length;
       pluginLine.forEach((pluginKey) => {
         var plugin = this.pluginManager.getPlugin(pluginKey);
@@ -66,18 +73,19 @@ class Editor {
           return;
         }
 
-        ulElement.appendChild(this._pluginToLiElement(plugin, defaultMenuItemWidth));
-        if (plugin.svg)  this._insertSvgSymbol(plugin.svg)
-        if (plugin.eventSelector && plugin.eventType && plugin.eventCallback) this._listenPluginEvent(ulElement, plugin);
+        subMenuListElement.appendChild(this._pluginToLiElement(plugin, defaultMenuItemWidth));
+        if (plugin.svg)  this._insertSvgSymbol(plugin.svg);
+        if (plugin.eventSelector && plugin.eventType && plugin.eventCallback) this._listenPluginEvent(subMenuListElement, plugin);
         if (plugin.stylesheet) this._insertStylesheet(plugin.stylesheet);
       });
 
-      docfrag.appendChild(ulElement);
+      pluginLineLiElement.appendChild(subMenuListElement);
 
+      subMenuItem.appendChild(pluginLineLiElement);
     });
 
     var footMenuList = this.modal.querySelector('.bee-modal-footer');
-    footMenuList.appendChild(docfrag);
+    footMenuList.appendChild(subMenuItem);
   }
 
   _insertStylesheet(stylesheet) {
@@ -156,7 +164,6 @@ class Editor {
   }
 
   setRange(range) {
-    range = range || this._range;
     if (!range) {
       range = this.getRange();
       range.collapse(false); // set to end
