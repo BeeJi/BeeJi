@@ -38,9 +38,27 @@ class Editor {
       docfrag.appendChild(liElement);
 
       if (plugin.svg) this._insertSvgSymbol(plugin.svg);
-      if (plugin.eventSelector && plugin.eventType && plugin.eventCallback) this._listenPluginEvent(docfrag, plugin);
+      if (plugin.eventSelector && plugin.eventType && plugin.eventCallback && !plugin.subMenus) this._listenPluginEvent(docfrag, plugin);
+      else if (plugin.subMenus) {
+        var subMenuContainerSelector = `.bee-modal-footer .${plugin.subMenus.toggleClass}`;
+        liElement.addEventListener('click', () => {
+          let subMenuContainer = this.modal.querySelector(subMenuContainerSelector);
+          let footerContainer = this.modal.querySelector('.bee-modal-footer');
+
+          if (subMenuContainer.classList.contains('show-sub-menus')) {
+            footerContainer.style.height = '44px';
+            footerContainer.style.lineHeight = '44px';
+          } else {
+            footerContainer.style.height = (44 + plugin.subMenus.plugins.length * 50) + 'px';
+            footerContainer.style.lineHeight = 'normal';
+          }
+
+          subMenuContainer.classList.toggle('show-sub-menus');
+        }, false);
+      }
+
       if (plugin.stylesheet) this._insertStylesheet(plugin.stylesheet);
-      if (plugin.plugins) this._generateSubMenus(plugin.plugins);
+      if (plugin.subMenus) this._generateSubMenus(plugin.subMenus);
     });
 
     var footMenuList = this.modal.querySelector('ul.bee-modal-footer-menu');
@@ -56,12 +74,12 @@ class Editor {
     let plugins = subMenus.plugins;
     let subMenuHeight = plugins.length * 50;
     let subMenuItem = document.createElement('ul');
-    subMenuItem.className = subMenus.toggleClass;
+    subMenuItem.className = subMenus.toggleClass + ' sub-container';
     subMenuItem.style.height = subMenuHeight + 'px';
 
     plugins.forEach((pluginLine) => {
       let pluginLineLiElement = document.createElement('li');
-      pluginLineLiElement.className = 'sub-menu';
+      pluginLineLiElement.className = 'sub-menus';
 
       let subMenuListElement = document.createElement('ul');
 
@@ -106,7 +124,6 @@ class Editor {
 
   _pluginToLiElement(plugin, width) {
     var li = document.createElement('li');
-    console.log('plugin.className::', plugin.className);
     li.className = plugin.className + ' menu-item';
     if (width) li.style.width = width + '%';
 

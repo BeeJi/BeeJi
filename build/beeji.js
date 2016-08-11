@@ -48,6 +48,10 @@
 
 	var _templates = __webpack_require__(1);
 
+	var _editor = __webpack_require__(51);
+
+	var _editor2 = _interopRequireDefault(_editor);
+
 	var _pluginsManager = __webpack_require__(2);
 
 	var _pluginsManager2 = _interopRequireDefault(_pluginsManager);
@@ -104,11 +108,10 @@
 
 	var _combineFont2 = _interopRequireDefault(_combineFont);
 
-	var _editor = __webpack_require__(51);
-
-	var _editor2 = _interopRequireDefault(_editor);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	//import CustomizeSub from './plugins/custom-sub';
+
 
 	//require('vconsole/dist/vconsole.min.js');
 	var beeji = {
@@ -151,6 +154,7 @@
 	beeji.PluginManager.addPlugin('paragraphleft', _basicParagraphLeft2.default);
 	beeji.PluginManager.addPlugin('paragraphright', _basicParagraphRight2.default);
 	beeji.PluginManager.addPlugin('font', _combineFont2.default);
+	//beeji.PluginManager.addPlugin('customizesub', CustomizeSub);
 
 	beeji.fly = function (initParams) {
 	  switch (initParams.type) {
@@ -1053,24 +1057,16 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	var style = '\n.bee-modal .bee-modal-footer ul.bee-modal-footer-font {\n  background: #fff;\n  list-style: none;\n  margin: 0;\n  padding: 0 10px;\n}\n\n.bee-modal .bee-modal-footer ul.bee-modal-footer-font > li {\n  height: 50px;\n  line-height: 50px;\n  border-bottom: 1px solid #eee;\n}\n\n.bee-modal .bee-modal-footer ul.bee-modal-footer-font > li > ul {\n  list-style: none;\n  margin: 0 auto;\n  padding: 0;\n  font-size: 0;\n}\n\n.bee-modal .bee-modal-footer ul.bee-modal-footer-font > li > ul > li {\n  display: inline-block;\n  text-align: center;\n  cursor: pointer;\n  font-size: 16px;\n  height: 50px;\n  line-height: 50px;\n}\n\n.bee-modal .bee-modal-footer ul.bee-modal-footer-font > li > ul.font-normal > li {\n  width: 20%;\n}\n\n.bee-modal .bee-modal-footer ul.bee-modal-footer-font > li > ul.font-align > li {\n  width: 33.33%;\n}\n\n.bee-modal .bee-modal-footer.show-font-detail {\n  height: 244px;\n  line-height: normal;\n}\n';
-
 	var Font = {
-	  className: 'font',
-	  stylesheet: style,
+	  className: 'combine-font',
 	  eventType: 'click',
 	  icon: 'icon-text-color',
-	  eventSelector: '.font',
-	  subMenu: {
-	    toggleClass: 'show-font-detail',
+	  eventSelector: '.combine-font',
+	  subMenus: {
+	    toggleClass: 'test-toggle-class',
 	    plugins: [['bold', 'italic', 'underline', 'strikethrough'], ['paragraphleft', 'paragraphcenter', 'paragraphright'], ['unorderedlist'], ['insertimage']]
 	  },
-	  svg: '\n    <symbol id="icon-text-color" viewBox="0 0 32 32">\n      <path class="path1" d="M10.063 26l1.8-6h8.274l1.8 6h3.551l-6-20h-6.976l-6 20h3.551zM14.863 10h2.274l1.8 6h-5.874l1.8-6z"></path>\n    </symbol>\n  ',
-	  eventCallback: function eventCallback(editor) {
-	    return function (e) {
-	      editor.modal.querySelector('.bee-modal-footer').classList.toggle('show-font-detail');
-	    };
-	  }
+	  svg: '\n    <symbol id="icon-text-color" viewBox="0 0 32 32">\n      <path class="path1" d="M10.063 26l1.8-6h8.274l1.8 6h3.551l-6-20h-6.976l-6 20h3.551zM14.863 10h2.274l1.8 6h-5.874l1.8-6z"></path>\n    </symbol>\n  '
 	};
 
 	exports.default = Font;
@@ -1144,9 +1140,26 @@
 	        docfrag.appendChild(liElement);
 
 	        if (plugin.svg) _this._insertSvgSymbol(plugin.svg);
-	        if (plugin.eventSelector && plugin.eventType && plugin.eventCallback) _this._listenPluginEvent(docfrag, plugin);
+	        if (plugin.eventSelector && plugin.eventType && plugin.eventCallback && !plugin.subMenus) _this._listenPluginEvent(docfrag, plugin);else if (plugin.subMenus) {
+	          var subMenuContainerSelector = '.bee-modal-footer .' + plugin.subMenus.toggleClass;
+	          liElement.addEventListener('click', function () {
+	            var subMenuContainer = _this.modal.querySelector(subMenuContainerSelector);
+	            var footerContainer = _this.modal.querySelector('.bee-modal-footer');
+
+	            if (subMenuContainer.classList.contains('show-sub-menus')) {
+	              footerContainer.style.height = '44px';
+	              footerContainer.style.lineHeight = '44px';
+	            } else {
+	              footerContainer.style.height = 44 + plugin.subMenus.plugins.length * 50 + 'px';
+	              footerContainer.style.lineHeight = 'normal';
+	            }
+
+	            subMenuContainer.classList.toggle('show-sub-menus');
+	          }, false);
+	        }
+
 	        if (plugin.stylesheet) _this._insertStylesheet(plugin.stylesheet);
-	        if (plugin.plugins) _this._generateSubMenus(plugin.plugins);
+	        if (plugin.subMenus) _this._generateSubMenus(plugin.subMenus);
 	      });
 
 	      var footMenuList = this.modal.querySelector('ul.bee-modal-footer-menu');
@@ -1165,12 +1178,12 @@
 	      var plugins = subMenus.plugins;
 	      var subMenuHeight = plugins.length * 50;
 	      var subMenuItem = document.createElement('ul');
-	      subMenuItem.className = subMenus.toggleClass;
+	      subMenuItem.className = subMenus.toggleClass + ' sub-container';
 	      subMenuItem.style.height = subMenuHeight + 'px';
 
 	      plugins.forEach(function (pluginLine) {
 	        var pluginLineLiElement = document.createElement('li');
-	        pluginLineLiElement.className = 'sub-menu';
+	        pluginLineLiElement.className = 'sub-menus';
 
 	        var subMenuListElement = document.createElement('ul');
 
@@ -1219,7 +1232,6 @@
 	    key: '_pluginToLiElement',
 	    value: function _pluginToLiElement(plugin, width) {
 	      var li = document.createElement('li');
-	      console.log('plugin.className::', plugin.className);
 	      li.className = plugin.className + ' menu-item';
 	      if (width) li.style.width = width + '%';
 

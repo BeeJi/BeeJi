@@ -135,7 +135,13 @@
 
 .bee-modal .bee-modal-footer ul li {
   display: inline-block;
-  text-align: center;
+  text-align: center
+}
+
+.bee-modal .bee-modal-footer ul li.sub-menus {
+  display: block;
+  height: 50px;
+  line-height: 50px;
 }
 
 .bee-modal .bee-modal-footer ul.sub-menu li {
@@ -222,6 +228,15 @@
   position: absolute;
   bottom: 44px;
   z-index: 11;
+}
+
+.sub-container {
+  background-color: #333;
+  display: none;
+}
+
+.sub-container.show-sub-menus {
+  display: block;
 }
 
 .icon {

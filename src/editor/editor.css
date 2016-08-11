@@ -126,6 +126,12 @@
     li {
       display: inline-block;
       text-align: center;
+
+      &.sub-menus {
+        display: block;
+        height: 50px;
+        line-height: 50px;
+      }
     }
   }
 
@@ -221,6 +227,15 @@
   position: absolute;
   bottom: 44px;
   z-index: 11;
+}
+
+.sub-container {
+  background-color: #333;
+  display: none;
+}
+
+.sub-container.show-sub-menus {
+  display: block;
 }
 
 .icon {
