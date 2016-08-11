@@ -72,10 +72,6 @@
 
 	var _basicIndentIncrease2 = _interopRequireDefault(_basicIndentIncrease);
 
-	var _basicBold = __webpack_require__(42);
-
-	var _basicBold2 = _interopRequireDefault(_basicBold);
-
 	var _basicItalic = __webpack_require__(43);
 
 	var _basicItalic2 = _interopRequireDefault(_basicItalic);
@@ -113,10 +109,11 @@
 	//import CustomizeSub from './plugins/custom-sub';
 
 
-	//require('vconsole/dist/vconsole.min.js');
+	//import Bold from './plugins/basic-bold';
 	var beeji = {
 	  version: '0.0.1'
-	};
+	}; //require('vconsole/dist/vconsole.min.js');
+
 
 	var init = {
 	  clickMode: function clickMode(domObj) {
@@ -146,7 +143,7 @@
 	beeji.PluginManager.addPlugin('orderedlist', _basicOrderedList2.default);
 	beeji.PluginManager.addPlugin('indentdecrease', _basicIndentDecrease2.default);
 	beeji.PluginManager.addPlugin('indentincrease', _basicIndentIncrease2.default);
-	beeji.PluginManager.addPlugin('bold', _basicBold2.default);
+	//beeji.PluginManager.addPlugin('bold', Bold);
 	beeji.PluginManager.addPlugin('italic', _basicItalic2.default);
 	beeji.PluginManager.addPlugin('strikethrough', _basicStrikethrough2.default);
 	beeji.PluginManager.addPlugin('underline', _basicUnderline2.default);
@@ -837,30 +834,7 @@
 	exports.default = IndentIncrease;
 
 /***/ },
-/* 42 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var Bold = {
-	  className: 'font-bold',
-	  eventType: 'click',
-	  icon: 'icon-bold',
-	  eventSelector: '.font-bold',
-	  eventCallback: function eventCallback(editor) {
-	    return function (e) {
-	      alert('bold');
-	    };
-	  },
-	  svg: '\n    <symbol id="icon-bold" viewBox="0 0 32 32">\n      <path class="path1" d="M22.121 15.145c1.172-1.392 1.879-3.188 1.879-5.145 0-4.411-3.589-8-8-8h-10v28h12c4.411 0 8-3.589 8-8 0-2.905-1.556-5.453-3.879-6.855zM12 6h3.172c1.749 0 3.172 1.794 3.172 4s-1.423 4-3.172 4h-3.172v-8zM16.969 26h-4.969v-8h4.969c1.827 0 3.313 1.794 3.313 4s-1.486 4-3.313 4z"></path>\n    </symbol>\n  '
-	};
-
-	exports.default = Bold;
-
-/***/ },
+/* 42 */,
 /* 43 */
 /***/ function(module, exports) {
 
