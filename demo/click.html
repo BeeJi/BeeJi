@@ -3,21 +3,53 @@
 <head lang="en">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1, minimum-scale=1">
-  <title>Click Event to init Bee Editor</title>
-  <link rel="stylesheet" href="../build/bee.css">
+  <title>Click Event to init BeeJi Editor</title>
+  <link rel="stylesheet" href="../build/beeji.css">
+  <style>
+    body {
+      background: #f7f7f7;
+    }
+
+    .editor {
+      padding: 25px;
+      background: #fff;
+      margin-bottom: 30px;
+    }
+  </style>
 </head>
 <body>
+<h1>Click Event to init BeeJi Editor</h1>
 
-<div class="editor"><p>Edit on mobile is easy, click me</p></div>
-<div class="editor">Hello world, mobile rich text editor, click me</div>
+<div class="editor"><p>Edit on mobile is easy, click me to try editor. CLICK ME!</p></div>
+<div class="editor">Hello world, mobile rich text editor, click me to try editor. CLICK ME!</div>
 
-<script src="../build/bee.js"></script>
+<script src="../build/beeji.js"></script>
 <script>
+  var Bold = {
+    className: 'font-bold',
+    eventType: 'click',
+    icon: 'icon-bold',
+    eventSelector: '.font-bold',
+    eventCallback: function(editor) {
+      return function(e) {
+        alert('bold');
+      };
+    },
+    svg: [
+    '<symbol id="icon-bold" viewBox="0 0 32 32">',
+      '<path class="path1" d="M22.121 15.145c1.172-1.392 1.879-3.188 1.879-5.145 0-4.411-3.589-8-8-8h-10v28h12c4.411 0 8-3.589 8-8 0-2.905-1.556-5.453-3.879-6.855zM12 6h3.172c1.749 0 3.172 1.794 3.172 4s-1.423 4-3.172 4h-3.172v-8zM16.969 26h-4.969v-8h4.969c1.827 0 3.313 1.794 3.313 4s-1.486 4-3.313 4z"></path>',
+    '</symbol>'
+    ].join()
+  };
+
+  beeji.PluginManager.addPlugin('bold', Bold);
+
   var objInit = {
     className: 'editor',
+    plugins: ['font', 'bold', 'orderedlist', 'unorderedlist', 'indentdecrease', 'indentincrease', 'insertimage'],
     type: 'click',
-    cancelText: '取消',
-    okText: '确定',
+    cancelText: 'Cancel',
+    okText: 'OK',
     okCallback: function(data, idx) {
       var divs = document.getElementsByClassName('editor');
       divs[idx].innerHTML = data;
@@ -27,7 +59,7 @@
     }
   };
 
-  bee.fly(objInit);
+  beeji.fly(objInit);
 </script>
 </body>
 </html>

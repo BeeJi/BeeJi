@@ -8,7 +8,7 @@ var plugins = [
 
 module.exports = {
   entry: {
-    bee: './src/index.js'
+    beeji: './src/index.js'
   },
   output: {
     path: './build',

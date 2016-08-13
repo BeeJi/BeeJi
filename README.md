@@ -23,6 +23,11 @@ var objInit = {
 bee.fly(objInit);
 ```
 
+# Config
+## plugins
+* unordered-list
+
+
 # License
 MIT
 

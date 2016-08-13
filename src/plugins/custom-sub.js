@@ -48,20 +48,17 @@ var style = `
   margin: 0;
   padding: 0 10px;
 }
-
 .bee-modal .bee-modal-footer ul.bee-modal-footer-font > li {
   height: 50px;
   line-height: 50px;
   border-bottom: 1px solid #eee;
 }
-
 .bee-modal .bee-modal-footer ul.bee-modal-footer-font > li > ul {
   list-style: none;
   margin: 0 auto;
   padding: 0;
   font-size: 0;
 }
-
 .bee-modal .bee-modal-footer ul.bee-modal-footer-font > li > ul > li {
   display: inline-block;
   text-align: center;
@@ -70,15 +67,12 @@ var style = `
   height: 50px;
   line-height: 50px;
 }
-
 .bee-modal .bee-modal-footer ul.bee-modal-footer-font > li > ul.font-normal > li {
   width: 20%;
 }
-
 .bee-modal .bee-modal-footer ul.bee-modal-footer-font > li > ul.font-align > li {
   width: 33.33%;
 }
-
 .bee-modal .bee-modal-footer.show-font-detail {
   height: 244px;
   line-height: normal;

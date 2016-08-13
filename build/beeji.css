@@ -1,4 +1,5 @@
 .bee-backdrop {
+  -webkit-transition: background-color 300ms ease-in-out;
   transition: background-color 300ms ease-in-out;
   position: fixed;
   top: 0;
@@ -19,23 +20,16 @@
   background-color: #fff;
 }
 
-@media (min-width: 680px) {
-  .bee-modal {
-    top: 20%;
-    right: 20%;
-    bottom: 20%;
-    left: 20%;
-    overflow: visible;
-    min-height: 240px;
-    width: 60%;
-  }
-}
-
-
 .bee-modal .bee-modal-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  transform: translate3d(0, 0, 0);
-  user-select: none;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   position: absolute;
   right: 0;
   left: 0;
@@ -96,7 +90,6 @@
   float: right;
 }
 
-
 .bee-modal .bee-modal-body {
   position: absolute;
   top: 44px;
@@ -105,13 +98,13 @@
   overflow: auto;
 }
 
-
 .bee-modal .bee-modal-body .bee-modal-content {
   color: #333;
   width: 100%;
   height: 100%;
   position: absolute;
   padding: 5px;
+  box-sizing: border-box;
 }
 
 .bee-modal .bee-modal-footer {
@@ -123,40 +116,101 @@
   height: 44px;
   /*line-height: 44px;*/
   border-color: #b2b2b2;
-  background-color: #f8f8f8;
+  /*background-color: #f8f8f8;*/
+  background-color: #525d63;
   /*background-image: linear-gradient(0deg, #b2b2b2, #b2b2b2 50%, transparent 50%);*/
   color: #444;
   width: 100%;
-
+  -webkit-transition: height 0.50s ease-in-out;
   transition: height 0.50s ease-in-out;
-
-  ul.bee-modal-footer-menu {
-    list-style: none;
-    margin: 0 auto;
-    padding: 0;
-    font-size: 0;
-
-    li {
-      display: inline-block;
-      width: 16.666666666%;
-      text-align: center;
-      cursor: pointer;
-      font-size: 16px;
-      height: 44px;
-      line-height: 44px;
-      /*position: relative;*/
-      vertical-align: middle;
-
-      &:hover,
-      &:active {
-        background: #CCC;
-      }
-    }
-  }
+  font-size: 0;
 }
 
+.bee-modal .bee-modal-footer ul {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  overflow: auto;
+}
 
+.bee-modal .bee-modal-footer ul li {
+  display: inline-block;
+  text-align: center
+}
 
+.bee-modal .bee-modal-footer ul li.sub-menus {
+  display: block;
+  height: 50px;
+  line-height: 50px;
+}
+
+.bee-modal .bee-modal-footer ul.sub-menu li {
+  height: 50px;
+  line-height: 50px;
+}
+
+.bee-modal .bee-modal-footer ul.bee-modal-footer-menu {
+  font-size: 0;
+  white-space: nowrap;
+  overflow: auto;
+  display: inline-block;
+  position: relative;
+  width: 100%;
+}
+
+.bee-modal .bee-modal-footer ul.bee-modal-footer-menu li {
+  /*cursor: pointer;*/
+  font-size: 16px;
+  height: 44px;
+  line-height: 44px;
+  /*position: relative;*/
+  vertical-align: middle;
+  min-width: 60px
+}
+
+/*background: #fff;*/
+
+.bee-modal .bee-modal-footer ul.bee-modal-footer-menu li:hover .icon, .bee-modal .bee-modal-footer ul.bee-modal-footer-menu li:active .icon {
+  fill: #51b5ab;
+}
+
+.bee-modal .bee-modal-footer > #more-button {
+  display: none;
+  vertical-align: top;
+  font-size: 0;
+  background: #525d63;
+  position: relative;
+}
+
+.bee-modal .bee-modal-footer > #more-button > div {
+  width: 40px;
+  height: 44px;
+  line-height: 44px;
+  vertical-align: top;
+  display: inline-block;
+  text-align: center;
+}
+
+.bee-modal .bee-modal-footer > #more-button .icon {
+  fill: #51b5ab;
+}
+
+.bee-modal .bee-modal-footer > #more-button:before {
+  content: '';
+  background-color: #51b5ab;
+  -webkit-transform: skew(-5deg);
+  transform: skew(-5deg);
+  position: absolute;
+  top: 0;
+  right: 80px;
+  width: 3px;
+  height: 44px;
+  z-index: 10;
+}
+
+.bee-modal .bee-modal-footer.show-more-button > #more-button {
+  display: inline-block;
+}
 
 .bee-dropdown-menu {
   display: none;
@@ -174,4 +228,20 @@
   position: absolute;
   bottom: 44px;
   z-index: 11;
+}
+
+.sub-container {
+  background-color: #333;
+  display: none;
+}
+
+.sub-container.show-sub-menus {
+  display: block;
+}
+
+.icon {
+  vertical-align: middle;
+  height: 20px;
+  width: 20px;
+  fill: #fff;
 }
