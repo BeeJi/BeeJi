@@ -3,6 +3,7 @@ import { svgSpriteContainer } from './common/templates';
 import Editor from './editor/editor.js';
 
 import PluginManager from './plugins-manager';
+import BackgroundText from './plugins/basic-background-text';
 import UnorderedList from './plugins/basic-unordered-list';
 import OrderedList from './plugins/basic-ordered-list';
 import IndentDecrease from './plugins/basic-indent-decrease';
@@ -54,6 +55,7 @@ beeji.PluginManager.addPlugin('paragraphcenter', ParagraphCenter);
 beeji.PluginManager.addPlugin('paragraphleft', ParagraphLeft);
 beeji.PluginManager.addPlugin('paragraphright', ParagraphRight);
 beeji.PluginManager.addPlugin('font', Font);
+beeji.PluginManager.addPlugin('backgroundtext', BackgroundText);
 //beeji.PluginManager.addPlugin('customizesub', CustomizeSub);
 
 beeji.fly = function(initParams) {

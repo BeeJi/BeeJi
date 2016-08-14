@@ -5,7 +5,7 @@ var Font = {
   subMenus: {
     toggleClass: 'test-toggle-class',
     plugins: [
-      ['bold', 'italic', 'underline', 'strikethrough'],
+      ['bold', 'italic', 'underline', 'strikethrough', 'backgroundtext'],
       ['paragraphleft', 'paragraphcenter', 'paragraphright']
     ]
   },
