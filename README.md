@@ -7,11 +7,11 @@
 
 * [Demo](http://beeji.cn/BeeJi/demo/click.html)
 
-# Develop
-Currently codes are based on postcss, webpack, es2015, svg sprite
+Codes are based on PostCSS, webpack, es2015, svg sprite  and balabala...
 
-PRs are welcome~
+PRs or Issues are warm welcome~
 
+# Development
 * clone this repo
 
 * npm install

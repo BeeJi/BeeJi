@@ -162,7 +162,6 @@ class Editor {
       }
     }, true);
 
-
     //this.modal.querySelector('li.handwriting').addEventListener('click', () => {
     //  var classNameStr = this.className;
     //  if (classNameStr.indexOf('active') === -1) {
@@ -191,6 +190,13 @@ class Editor {
       selection.addRange(range);
     } catch (e) {/* IE throws error sometimes*/}
     return this;
+  }
+
+  insertNodeToRange(newElement) {
+    let range = this.getRange();
+    range.deleteContents();
+    range.insertNode(newElement);
+    range.collapse(false);
   }
 
   getRange() {
