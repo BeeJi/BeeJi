@@ -2,12 +2,17 @@ var IndentIncrease = {
   className: 'indent-increase',
   eventType: 'click',
   icon: 'icon-indent-increase',
-  eventSelector: '.indent-increase',
   eventCallback: function(editor) {
     return function(e) {
       let currentRange = editor.getRange();
       if (currentRange.commonAncestorContainer && currentRange.commonAncestorContainer.parentNode) {
-        currentRange.commonAncestorContainer.parentNode.style.textIndent = '2em';
+        let parentNode = currentRange.commonAncestorContainer.parentNode;
+        let currentIndent = parentNode.style.textIndent.substr(0) || 0;
+        if (typeof currentIndent === 'string') {
+          let emIdx = currentIndent.indexOf('em');
+          if (emIdx !== -1) currentIndent = parseInt(currentIndent.substr(0, emIdx));
+        }
+        parentNode.style.textIndent = (currentIndent + 2) + 'em';
       }
     };
   },

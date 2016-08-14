@@ -2,7 +2,6 @@ var Bold = {
   className: 'paragraph-right',
   eventType: 'click',
   icon: 'icon-paragraph-right',
-  eventSelector: '.paragraph-right',
   eventCallback: function(editor) {
     return function(e) {
       alert('paragraph-right');

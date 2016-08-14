@@ -2,7 +2,6 @@ var Underline = {
   className: 'font-underline',
   eventType: 'click',
   icon: 'icon-underline',
-  eventSelector: '.font-underline',
   eventCallback: function(editor) {
     return function(e) {
       alert('underline');

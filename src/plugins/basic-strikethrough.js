@@ -2,7 +2,6 @@ var Strikethrough = {
   className: 'font-strikethrough',
   eventType: 'click',
   icon: 'icon-strikethrough',
-  eventSelector: '.font-strikethrough',
   eventCallback: function(editor) {
     return function(e) {
       alert('strikethrough');

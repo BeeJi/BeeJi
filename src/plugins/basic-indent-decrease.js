@@ -2,12 +2,18 @@ var IndentDecrease = {
   className: 'indent-decrease',
   eventType: 'click',
   icon: 'icon-indent-decrease',
-  eventSelector: '.indent-decrease',
   eventCallback: function(editor) {
     return function(e) {
       let currentRange = editor.getRange();
       if (currentRange.commonAncestorContainer && currentRange.commonAncestorContainer.parentNode) {
-        currentRange.commonAncestorContainer.parentNode.style.textIndent = '0em';
+        let parentNode = currentRange.commonAncestorContainer.parentNode;
+        let currentIndent = parentNode.style.textIndent.substr(0) || 0;
+        if (typeof currentIndent === 'string') {
+          let emIdx = currentIndent.indexOf('em');
+          if (emIdx !== -1) currentIndent = parseInt(currentIndent.substr(0, emIdx));
+        }
+        currentIndent = currentIndent > 2 ? (currentIndent - 2) : 0;
+        parentNode.style.textIndent = currentIndent + 'em';
       }
     };
   },

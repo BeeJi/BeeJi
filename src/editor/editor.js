@@ -38,7 +38,7 @@ class Editor {
       docfrag.appendChild(liElement);
 
       if (plugin.svg) this._insertSvgSymbol(plugin.svg);
-      if (plugin.eventSelector && plugin.eventType && plugin.eventCallback && !plugin.subMenus) this._listenPluginEvent(docfrag, plugin);
+      if (plugin.eventType && plugin.eventCallback && !plugin.subMenus) this._listenPluginEvent(docfrag, plugin);
       else if (plugin.subMenus) {
         var subMenuContainerSelector = `.bee-modal-footer .${plugin.subMenus.toggleClass}`;
         liElement.addEventListener('click', () => {
@@ -65,7 +65,7 @@ class Editor {
     footMenuList.appendChild(docfrag);
 
     if (pluginsLength > 6) {
-      footMenuList.style.width = (window.innerWidth - 80) + 'px';
+      footMenuList.style.width = (window.innerWidth - 60) + 'px';
       this.modal.querySelector('.bee-modal-footer').classList.toggle('show-more-button');
     }
   }
@@ -93,7 +93,7 @@ class Editor {
 
         subMenuListElement.appendChild(this._pluginToLiElement(plugin, defaultMenuItemWidth));
         if (plugin.svg)  this._insertSvgSymbol(plugin.svg);
-        if (plugin.eventSelector && plugin.eventType && plugin.eventCallback) this._listenPluginEvent(subMenuListElement, plugin);
+        if (plugin.eventType && plugin.eventCallback) this._listenPluginEvent(subMenuListElement, plugin);
         if (plugin.stylesheet) this._insertStylesheet(plugin.stylesheet);
       });
 
@@ -113,7 +113,8 @@ class Editor {
   }
 
   _listenPluginEvent(docfrag, plugin) {
-    let target = docfrag.querySelector(plugin.eventSelector);
+    let eventSelector = plugin.eventSelector || `.${plugin.className}`;
+    let target = docfrag.querySelector(eventSelector);
     target.addEventListener(plugin.eventType, plugin.eventCallback(this));
   }
 
@@ -197,6 +198,9 @@ class Editor {
     if (!range) range = document.createRange();
     if (!utility.containsNode(editor, range.commonAncestorContainer)) {
       range.selectNodeContents(editor);
+      range.collapse(false);
+    } else if (range.commonAncestorContainer.className === 'bee-modal-content') {
+      range.selectNodeContents(range.commonAncestorContainer.lastElementChild.lastChild);
       range.collapse(false);
     }
     return range;

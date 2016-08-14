@@ -2,7 +2,6 @@ var Font = {
   className: 'combine-font',
   eventType: 'click',
   icon: 'icon-text-color',
-  eventSelector: '.combine-font',
   subMenus: {
     toggleClass: 'test-toggle-class',
     plugins: [

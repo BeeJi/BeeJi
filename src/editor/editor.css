@@ -179,7 +179,7 @@
     position: relative;
 
     > div {
-      width: 40px;
+      width: 30px;
       height: 44px;
       line-height: 44px;
       vertical-align: top;
@@ -193,11 +193,12 @@
        transform: skew(-5deg);
        position: absolute;
        top: 0;
-       right: 80px;
-       width: 3px;
+       right: 60px;
+       width: 2px;
        height: 44px;
        z-index: 10;
-    }
+       box-shadow: -2px 0px 5px #333;
+     }
 
     .icon {
       fill: #51b5ab;
