@@ -4,6 +4,8 @@ function switchToListElement(type, appendTo, node2Append) {
   liElement.appendChild(node2Append);
   ulElement.appendChild(liElement);
   appendTo.appendChild(ulElement);
+
+  return liElement;
 }
 
 var OrderedList = {
@@ -14,15 +16,21 @@ var OrderedList = {
     return function(e) {
       let currentRange = editor.getRange();
       let element2Transfer = currentRange.commonAncestorContainer.firstElementChild;
+      let newElement;
       if (element2Transfer) {
         currentRange.commonAncestorContainer.removeChild(currentRange.commonAncestorContainer.firstElementChild);
-        switchToListElement('ol', currentRange.commonAncestorContainer, element2Transfer);
+        newElement = switchToListElement('ol', currentRange.commonAncestorContainer, element2Transfer);
       } else {
         let parentNode = currentRange.commonAncestorContainer.parentNode;
         element2Transfer = currentRange.commonAncestorContainer;
         parentNode.removeChild(currentRange.commonAncestorContainer);
-        switchToListElement('ol', parentNode, element2Transfer);
+        newElement = switchToListElement('ol', parentNode, element2Transfer);
       }
+
+      let updateRange = document.createRange();
+      updateRange.selectNodeContents(newElement);
+      updateRange.collapse(false);
+      editor.setRange(updateRange);
     };
   },
   svg: `
