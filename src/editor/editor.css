@@ -126,12 +126,17 @@
     li {
       display: inline-block;
       text-align: center;
+      position: relative;
+      > span {
+        font-size: 16px;
+      }
 
       &.sub-menus {
         display: block;
         height: 50px;
         line-height: 50px;
       }
+
     }
   }
 

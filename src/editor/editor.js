@@ -134,6 +134,8 @@ class Editor {
         `;
     } else if (plugin.template) {
       li.innerHTML = plugin.template;
+    } else if (plugin.label) {
+      li.innerHTML = `<span>${plugin.label}</span>`;
     }
 
     return li;
