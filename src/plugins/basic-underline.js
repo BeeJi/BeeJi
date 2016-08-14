@@ -4,7 +4,25 @@ var Underline = {
   icon: 'icon-underline',
   eventCallback: function(editor) {
     return function(e) {
-      alert('underline');
+      let currentRange = editor.getRange();
+      let newSpan = document.createElement('span');
+      newSpan.style.textDecoration = 'underline';
+      newSpan.innerHTML = '&nbsp;';
+      let append2Element;
+      if (currentRange.commonAncestorContainer.nodeType === 3) {
+        let tempParentElement = currentRange.commonAncestorContainer.parentElement;
+        if (tempParentElement.nodeName === 'SPAN') {
+          append2Element = tempParentElement.parentElement;
+        } else {
+          append2Element = tempParentElement;
+        }
+      } else append2Element = currentRange.endContainer;
+      append2Element.appendChild(newSpan);
+
+      let updateRange = document.createRange();
+      updateRange.selectNodeContents(newSpan);
+      updateRange.collapse(false);
+      editor.setRange(updateRange);
     };
   },
   svg: `

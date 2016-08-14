@@ -6,9 +6,7 @@ var Font = {
     toggleClass: 'test-toggle-class',
     plugins: [
       ['bold', 'italic', 'underline', 'strikethrough'],
-      ['paragraphleft', 'paragraphcenter', 'paragraphright'],
-      ['unorderedlist'],
-      ['insertimage']
+      ['paragraphleft', 'paragraphcenter', 'paragraphright']
     ]
   },
   svg: `

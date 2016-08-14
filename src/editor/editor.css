@@ -114,7 +114,7 @@
   /*background-image: linear-gradient(0deg, #b2b2b2, #b2b2b2 50%, transparent 50%);*/
   color: #444;
   width: 100%;
-  transition: height 0.50s ease-in-out;
+  transition: height 0.30s ease-in-out;
   font-size: 0;
 
   ul {
