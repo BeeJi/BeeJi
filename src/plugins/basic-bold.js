@@ -2,7 +2,6 @@ var Bold = {
   className: 'font-bold',
   eventType: 'click',
   icon: 'icon-bold',
-  eventSelector: '.font-bold',
   eventCallback: function(editor) {
     return function(e) {
       alert('bold');

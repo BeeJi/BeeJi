@@ -2,7 +2,6 @@ var Bold = {
   className: 'paragraph-center',
   eventType: 'click',
   icon: 'icon-paragraph-center',
-  eventSelector: '.paragraph-center',
   eventCallback: function(editor) {
     return function(e) {
       alert('paragraph-center');

@@ -10,7 +10,6 @@ var OrderedList = {
   className: 'ordered-list',
   eventType: 'click',
   icon: 'icon-list-numbered',
-  eventSelector: 'li.ordered-list',
   eventCallback: function(editor) {
     return function(e) {
       let currentRange = editor.getRange();

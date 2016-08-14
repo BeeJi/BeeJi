@@ -2,7 +2,6 @@ var Italic = {
   className: 'font-italic',
   eventType: 'click',
   icon: 'icon-italic',
-  eventSelector: '.font-italic',
   eventCallback: function(editor) {
     return function(e) {
       alert('italic');

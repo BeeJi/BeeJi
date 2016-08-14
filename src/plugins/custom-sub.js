@@ -84,7 +84,6 @@ var Font = {
   stylesheet: style,
   eventType: 'click',
   icon: 'icon-text-color',
-  eventSelector: '.font',
   eventCallback: function(editor) {
     var modalFooter = editor.modal.querySelector('.bee-modal-footer-menu');
     modalFooter.insertAdjacentHTML('afterend', subTemplate);

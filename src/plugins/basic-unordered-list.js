@@ -10,7 +10,6 @@ var UnorderedList = {
   className: 'unordered-list',
   eventType: 'click',
   icon: 'icon-list2',
-  eventSelector: 'li.unordered-list',
   eventCallback: function(editor) {
     return function(e) {
       let currentRange = editor.getRange();

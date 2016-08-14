@@ -1,33 +1,22 @@
-# BeeJi Mobile Rich Text Editor
-[Homepage](http://beeji.cn/)
+# BeeJi 
+> HTML5 Mobile Rich Text Editor
 
-# Installation
-```
-npm install beeji
-```
+* [Homepage](http://beeji.cn/)
 
-# Usage
-* import js, css files
-* init
-```javascript
-var objInit = {
-  className: 'editor',
-  type: 'click',
-  cancelText: 'Cancel',
-  okText: 'Ok',
-  okCallback: function(data, idx) {
-    let divs = document.getElementsByClassName('editor');
-    divs[idx].innerHTML = data;
-  }
-};
-bee.fly(objInit);
-```
+* [Documentation](http://doc.beeji.cn)
 
-# Config
-## plugins
-* unordered-list
+* [Demo](http://beeji.cn/BeeJi/demo/click.html)
 
+# Develop
+Currently codes are based on postcss, webpack, es2015, svg sprite
+
+PRs are welcome~
+
+* clone this repo
+
+* npm install
+
+* webpack --watch
 
 # License
 MIT
-
