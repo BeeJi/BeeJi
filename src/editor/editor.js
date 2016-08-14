@@ -34,7 +34,7 @@ class Editor {
       }
 
       let liElement;
-      liElement = pluginsLength <= 6 ? this._pluginToLiElement(plugin, defaultMenuItemWidth) : this._pluginToLiElement(plugin);
+      liElement = pluginsLength <= 5 ? this._pluginToLiElement(plugin, defaultMenuItemWidth) : this._pluginToLiElement(plugin);
       docfrag.appendChild(liElement);
 
       if (plugin.svg) this._insertSvgSymbol(plugin.svg);
@@ -64,7 +64,7 @@ class Editor {
     var footMenuList = this.modal.querySelector('ul.bee-modal-footer-menu');
     footMenuList.appendChild(docfrag);
 
-    if (pluginsLength > 6) {
+    if (pluginsLength > 5) {
       footMenuList.style.width = (window.innerWidth - 60) + 'px';
       this.modal.querySelector('.bee-modal-footer').classList.toggle('show-more-button');
     }
@@ -140,6 +140,16 @@ class Editor {
   }
 
   addEventListener() {
+    this.modal.querySelector('div#arrow-left').addEventListener('click', (event) => {
+      utility.stopPropagation(event);
+      this.modal.querySelector('ul.bee-modal-footer-menu').scrollLeft -= 60;
+    });
+
+    this.modal.querySelector('div#arrow-right').addEventListener('click', (event) => {
+      utility.stopPropagation(event);
+      this.modal.querySelector('ul.bee-modal-footer-menu').scrollLeft += 60;
+    });
+
     this.modal.querySelector('div.bee-modal').addEventListener('click', (event) => {
       utility.stopPropagation(event);
     });
