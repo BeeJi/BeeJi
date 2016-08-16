@@ -25,17 +25,22 @@ let beeji = {
 };
 
 const init = {
-  clickMode: (domObj) => {
-    let divs = document.getElementsByClassName(domObj.className);
+  clickMode: (config) => {
+    let divs = document.getElementsByClassName(config.className);
     for (let i = 0, len = divs.length; i < len; i++) {
       divs[i].addEventListener('click', function() {
-        domObj.content = this.innerHTML;
-        domObj.index = i;
-        let objBee = new Editor(domObj);
+        config.content = this.innerHTML;
+        config.index = i;
+        let objBee = new Editor(config);
         objBee.addEventListener();
         objBee.focus();
       });
     }
+  },
+  jsInvokeMode: (config) => {
+    let objBee = new Editor(config);
+    objBee.addEventListener();
+    objBee.focus();
   }
 };
 
@@ -59,9 +64,12 @@ beeji.PluginManager.addPlugin('backgroundtext', BackgroundText);
 //beeji.PluginManager.addPlugin('customizesub', CustomizeSub);
 
 beeji.fly = function(initParams) {
-  switch (initParams.type) {
-    case 'click' :
+  switch (initParams.mode) {
+    case 'click-content' :
       init.clickMode(initParams);
+      break;
+    case 'javascript-invoke' :
+      init.jsInvokeMode(initParams);
       break;
   }
 };

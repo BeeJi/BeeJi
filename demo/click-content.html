@@ -3,7 +3,7 @@
 <head lang="en">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1, minimum-scale=1">
-  <title>Click Event to init BeeJi Editor</title>
+  <title>Click Content to init Editor</title>
   <link rel="stylesheet" href="../build/beeji.css">
   <style>
     body {
@@ -18,7 +18,7 @@
   </style>
 </head>
 <body>
-<h1>Click Event to init BeeJi Editor</h1>
+<h1>Click Content to init Editor</h1>
 
 <div class="editor"><p>Edit on mobile is easy, click me to try editor. CLICK ME!</p></div>
 <div class="editor">Hello world, mobile rich text editor, click me to try editor. CLICK ME!</div>
@@ -27,10 +27,7 @@
 <script>
   var objInit = {
     className: 'editor',
-    plugins: ['unorderedlist', 'orderedlist', 'indentdecrease', 'indentincrease', 'insertimage', 'font'],
-    type: 'click',
-    cancelText: 'Cancel',
-    okText: 'OK',
+    mode: 'click-content',
     okCallback: function(data, idx) {
       var divs = document.getElementsByClassName('editor');
       divs[idx].innerHTML = data;

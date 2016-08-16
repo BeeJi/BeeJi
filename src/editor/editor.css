@@ -190,6 +190,12 @@
       vertical-align: top;
       display: inline-block;
       text-align: center;
+
+      &.disable {
+        .icon {
+          fill: #333;
+        }
+      }
     }
 
     &:before {
