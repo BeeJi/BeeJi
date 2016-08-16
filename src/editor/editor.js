@@ -16,9 +16,8 @@ class Editor {
 
     this.config = config;
     this.editor = this.modal.querySelector('div#bee-editor-content');
-
     this.pluginManager = window.beeji.PluginManager;
-    this.initPlugins(config.plugins);
+    this.initPlugins(config.plugins || ['unorderedlist', 'orderedlist', 'indentdecrease', 'indentincrease', 'insertimage', 'font']);
   }
 
   initPlugins(plugins) {
@@ -137,19 +136,37 @@ class Editor {
     } else if (plugin.label) {
       li.innerHTML = `<span>${plugin.label}</span>`;
     }
-
     return li;
   }
 
   addEventListener() {
-    this.modal.querySelector('div#arrow-left').addEventListener('click', (event) => {
+    this.modal.querySelector('div#arrow-left').classList.toggle('disable');
+    let menuContainer = this.modal.querySelector('ul.bee-modal-footer-menu');
+    let btnLeft = this.modal.querySelector('div#arrow-left');
+    let btnRight = this.modal.querySelector('div#arrow-right');
+
+    btnLeft.addEventListener('click', (event) => {
       utility.stopPropagation(event);
-      this.modal.querySelector('ul.bee-modal-footer-menu').scrollLeft -= 60;
+      menuContainer.scrollLeft -= 60;
+
+      if (menuContainer.scrollLeft === 0) {
+        btnLeft.className = 'disable';
+      }
+      if (parseInt(menuContainer.scrollLeft) + parseInt(menuContainer.style.width) < parseInt(menuContainer.scrollWidth)) {
+        btnRight.className = '';
+      }
     });
 
-    this.modal.querySelector('div#arrow-right').addEventListener('click', (event) => {
+    btnRight.addEventListener('click', (event) => {
       utility.stopPropagation(event);
-      this.modal.querySelector('ul.bee-modal-footer-menu').scrollLeft += 60;
+      menuContainer.scrollLeft += 60;
+
+      if (menuContainer.scrollLeft > 0) {
+        btnLeft.className = '';
+      }
+      if (parseInt(menuContainer.scrollLeft) + parseInt(menuContainer.style.width) >= parseInt(menuContainer.scrollWidth)) {
+        btnRight.className = 'disable';
+      }
     });
 
     this.modal.querySelector('div.bee-modal').addEventListener('click', (event) => {
@@ -173,17 +190,6 @@ class Editor {
         this.setRange(selection.getRangeAt(0));
       }
     }, true);
-
-    //this.modal.querySelector('li.handwriting').addEventListener('click', () => {
-    //  var classNameStr = this.className;
-    //  if (classNameStr.indexOf('active') === -1) {
-    //    this.className = classNameStr + ' active';
-    //    this.openHandWritingPanel();
-    //  } else {
-    //    this.className = classNameStr.replace(/\bactive\b/,'');
-    //    this.removeHandWritingPanel();
-    //  }
-    //});
   }
 
   focus(focusStart) {

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1, minimum-scale=1">
+  <title>JavaScript invoke Editor directly</title>
+  <link rel="stylesheet" href="../build/beeji.css">
+  <style>
+    body {
+      background: #f7f7f7;
+    }
+
+    .editor {
+      padding: 25px;
+      background: #fff;
+      margin-bottom: 30px;
+    }
+
+    .btn-edit {
+      position: fixed;
+      right: 30px;
+      bottom: 20px;
+      color: #fff;
+      background-color: #1e89e0;
+      line-height: 1;
+      font-size: 20px;
+      padding: 8px 16px;
+      border-radius: 4px;
+      box-shadow: 0 0 8px rgba(0,0,0,.4);
+    }
+  </style>
+</head>
+<body>
+<h1>JavaScript invoke Editor directly</h1>
+
+<div class="editor">
+  <p>Edit on mobile is easy.</p>
+  <p>Click the edit button to have a try.</p>
+</div>
+<div class="btn-edit">Edit</div>
+
+<script src="../build/beeji.js"></script>
+<script>
+  document.querySelector('.btn-edit').addEventListener('click', function() {
+    var objInit = {
+      mode: 'javascript-invoke',
+      content: document.getElementsByClassName('editor')[0].innerHTML,
+      okCallback: function(data) {
+        document.getElementsByClassName('editor')[0].innerHTML = data;
+        console.log('data::', data);
+      }
+    };
+
+    beeji.fly(objInit);
+  });
+</script>
+</body>
+</html>
