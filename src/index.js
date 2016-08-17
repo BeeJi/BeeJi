@@ -1,4 +1,3 @@
-//require('vconsole/dist/vconsole.min.js');
 import { svgSpriteContainer } from './common/templates';
 import Editor from './editor/editor.js';
 
