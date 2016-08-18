@@ -1,3 +1,7 @@
+> Coding, there are many bugs, don't use it in production. PRs or Issues are warm welcome~
+
+Currently, it only works not bad only in Chrome.
+
 # BeeJi 
 > HTML5 Mobile Rich Text Editor
 

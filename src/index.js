@@ -18,7 +18,6 @@ import InsertImage from './plugins/insert-image';
 import Font from './plugins/combine-font';
 //import CustomizeSub from './plugins/custom-sub';
 
-
 let beeji = {
   version: '0.0.1'
 };

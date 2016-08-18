@@ -116,7 +116,6 @@
 
 	//import CustomizeSub from './plugins/custom-sub';
 
-
 	var beeji = {
 	  version: '0.0.1'
 	};
@@ -1118,16 +1117,7 @@
 	      var newSpan = document.createElement('span');
 	      newSpan.style.background = '#f9cc9d';
 	      newSpan.innerHTML = '&nbsp;';
-	      var append2Element = void 0;
-	      if (currentRange.commonAncestorContainer.nodeType === 3) {
-	        var tempParentElement = currentRange.commonAncestorContainer.parentElement;
-	        if (tempParentElement.nodeName === 'SPAN') {
-	          append2Element = tempParentElement.parentElement;
-	        } else {
-	          append2Element = tempParentElement;
-	        }
-	      } else append2Element = currentRange.endContainer;
-	      append2Element.appendChild(newSpan);
+	      currentRange.insertNode(newSpan);
 
 	      var updateRange = document.createRange();
 	      updateRange.selectNodeContents(newSpan);
@@ -1321,17 +1311,7 @@
 	      var newSpan = document.createElement('span');
 	      newSpan.style.fontWeight = 'bold';
 	      newSpan.innerHTML = '&nbsp;';
-	      var append2Element = void 0;
-	      if (currentRange.commonAncestorContainer.nodeType === 3) {
-	        var tempParentElement = currentRange.commonAncestorContainer.parentElement;
-	        if (tempParentElement.nodeName === 'SPAN') {
-	          append2Element = tempParentElement.parentElement;
-	        } else {
-	          append2Element = tempParentElement;
-	        }
-	      } else append2Element = currentRange.endContainer;
-	      append2Element.appendChild(newSpan);
-
+	      currentRange.insertNode(newSpan);
 	      var updateRange = document.createRange();
 	      updateRange.selectNodeContents(newSpan);
 	      updateRange.collapse(false);
@@ -1362,16 +1342,7 @@
 	      var newSpan = document.createElement('span');
 	      newSpan.style.fontStyle = 'italic';
 	      newSpan.innerHTML = '&nbsp;';
-	      var append2Element = void 0;
-	      if (currentRange.commonAncestorContainer.nodeType === 3) {
-	        var tempParentElement = currentRange.commonAncestorContainer.parentElement;
-	        if (tempParentElement.nodeName === 'SPAN') {
-	          append2Element = tempParentElement.parentElement;
-	        } else {
-	          append2Element = tempParentElement;
-	        }
-	      } else append2Element = currentRange.endContainer;
-	      append2Element.appendChild(newSpan);
+	      currentRange.insertNode(newSpan);
 
 	      var updateRange = document.createRange();
 	      updateRange.selectNodeContents(newSpan);
@@ -1403,16 +1374,7 @@
 	      var newSpan = document.createElement('span');
 	      newSpan.style.textDecoration = 'line-through';
 	      newSpan.innerHTML = '&nbsp;';
-	      var append2Element = void 0;
-	      if (currentRange.commonAncestorContainer.nodeType === 3) {
-	        var tempParentElement = currentRange.commonAncestorContainer.parentElement;
-	        if (tempParentElement.nodeName === 'SPAN') {
-	          append2Element = tempParentElement.parentElement;
-	        } else {
-	          append2Element = tempParentElement;
-	        }
-	      } else append2Element = currentRange.endContainer;
-	      append2Element.appendChild(newSpan);
+	      currentRange.insertNode(newSpan);
 
 	      var updateRange = document.createRange();
 	      updateRange.selectNodeContents(newSpan);
@@ -1444,16 +1406,7 @@
 	      var newSpan = document.createElement('span');
 	      newSpan.style.textDecoration = 'underline';
 	      newSpan.innerHTML = '&nbsp;';
-	      var append2Element = void 0;
-	      if (currentRange.commonAncestorContainer.nodeType === 3) {
-	        var tempParentElement = currentRange.commonAncestorContainer.parentElement;
-	        if (tempParentElement.nodeName === 'SPAN') {
-	          append2Element = tempParentElement.parentElement;
-	        } else {
-	          append2Element = tempParentElement;
-	        }
-	      } else append2Element = currentRange.endContainer;
-	      append2Element.appendChild(newSpan);
+	      currentRange.insertNode(newSpan);
 
 	      var updateRange = document.createRange();
 	      updateRange.selectNodeContents(newSpan);

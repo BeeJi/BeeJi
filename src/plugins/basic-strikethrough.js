@@ -8,16 +8,7 @@ var Strikethrough = {
       let newSpan = document.createElement('span');
       newSpan.style.textDecoration = 'line-through';
       newSpan.innerHTML = '&nbsp;';
-      let append2Element;
-      if (currentRange.commonAncestorContainer.nodeType === 3) {
-        let tempParentElement = currentRange.commonAncestorContainer.parentElement;
-        if (tempParentElement.nodeName === 'SPAN') {
-          append2Element = tempParentElement.parentElement;
-        } else {
-          append2Element = tempParentElement;
-        }
-      } else append2Element = currentRange.endContainer;
-      append2Element.appendChild(newSpan);
+      currentRange.insertNode(newSpan);
 
       let updateRange = document.createRange();
       updateRange.selectNodeContents(newSpan);
