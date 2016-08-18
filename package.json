@@ -1,6 +1,6 @@
 {
   "name": "beeji",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Mobile Rich Text Editor, Mobile WYSIWYG",
   "main": "index.js",
   "directories": {
