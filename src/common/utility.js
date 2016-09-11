@@ -13,6 +13,14 @@ var utility = {
       child = child.parentNode;
     }
     return false;
+  },
+  appendHtml(el, str) {
+    var div = document.createElement('div');
+    div.innerHTML = str;
+    while (div.children.length > 0) {
+      console.log(div.children[0]);
+      el.appendChild(div.children[0]);
+    }
   }
 };
 
