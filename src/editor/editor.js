@@ -118,8 +118,27 @@ class Editor {
   }
 
   _insertSvgSymbol(svg) {
-    var svgSprite = document.body.querySelector('.svg-sprite symbol');
-    svgSprite.insertAdjacentHTML('beforebegin', svg);
+    //var svgSprite = document.body.querySelector('svg symbol');
+    //var svgSprite = document.getElementsByTagName('symbol')[0];
+    //console.log('svgSprite:1:', svgSprite);
+    //svgSprite.insertAdjacentHTML('beforebegin', svg);
+
+    //var docfrag = document.createDocumentFragment();
+    //docfrag.innerHTML = svg;
+    //console.log('docfrag::', docfrag);
+    //var range = document.createRange();
+    //var frag = range.createContextualFragment(svg);
+    //svgSprite.parentNode.insertBefore(docfrag, svgSprite);
+    //var div = document.createElement('div');
+    //div.innerHTML = svg;
+    //
+    //svgSprite.parentNode.insertBefore(div.firstElementChild, svgSprite);
+
+    //var svgSprite = document.body.querySelector('svg defs');
+    //utility.appendHtml(svgSprite, svg);
+
+    var svgSprite = document.body.querySelector('svg defs');
+    svgSprite.innerHTML += svg;
   }
 
   _pluginToLiElement(plugin, width) {
