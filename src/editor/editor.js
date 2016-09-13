@@ -204,10 +204,22 @@ class Editor {
       utility.destroy(this.modal);
     });
 
-    this.modal.querySelector('div#bee-editor-content').addEventListener('blur', () => {
+    this.editor.addEventListener('blur', () => {
       if (selection.getRangeAt && selection.rangeCount) {
         this.setRange(selection.getRangeAt(0));
       }
+    });
+
+    this.editor.addEventListener('keyup', (e) => {
+      var selection = window.getSelection();
+      var range = selection.getRangeAt(0);
+      this.setRange(range);
+    }, true);
+
+    this.editor.addEventListener('click', (e) => {
+      var selection = window.getSelection();
+      var range = selection.getRangeAt(0);
+      this.setRange(range);
     }, true);
   }
 
@@ -226,6 +238,7 @@ class Editor {
       selection.removeAllRanges();
       selection.addRange(range);
     } catch (e) {/* IE throws error sometimes*/}
+    this.range = range;
     return this;
   }
 
@@ -237,6 +250,7 @@ class Editor {
   }
 
   getRange() {
+    if (this.range) return this.range;
     var editor = this.editor, range = selection.rangeCount && selection.getRangeAt(0);
     if (!range) range = document.createRange();
     if (!utility.containsNode(editor, range.commonAncestorContainer)) {
@@ -248,6 +262,7 @@ class Editor {
     }
     return range;
   }
+
 }
 
 export default Editor;

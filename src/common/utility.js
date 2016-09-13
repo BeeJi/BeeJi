@@ -21,6 +21,17 @@ var utility = {
       console.log(div.children[0]);
       el.appendChild(div.children[0]);
     }
+  },
+  forEach(obj, iterator, arrayLike) {
+    if (!obj) return;
+    if (arrayLike == null) arrayLike = utils.is(obj, 'Array');
+    if (arrayLike) {
+      for (var i = 0, l = obj.length; i < l; i++) iterator(obj[i], i, obj);
+    } else {
+      for (var key in obj) {
+        if (obj.hasOwnProperty(key)) iterator(obj[key], key, obj);
+      }
+    }
   }
 };
 
