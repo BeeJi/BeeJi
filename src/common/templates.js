@@ -9,11 +9,6 @@ export function generateClickerModalHTML(options) {
           ${options.okText || 'OK'}
         </button>
       </div>
-      <div class="bee-modal-body">
-        <div id="bee-editor-content" class="bee-modal-content" contentEditable="true">
-          ${options.content}
-        </div>
-      </div>
       <div class="bee-modal-footer">
         <ul class="bee-modal-footer-menu">
         </ul>
@@ -26,6 +21,12 @@ export function generateClickerModalHTML(options) {
           </div>
         </div>
       </div>
+      <div class="bee-modal-body">
+        <div id="bee-editor-content" class="bee-modal-content" contentEditable="true">
+          ${options.content}
+        </div>
+      </div>
+
     </div>
   `;
 }

@@ -11,7 +11,8 @@ class Editor {
     divModal.className = 'bee-backdrop';
     divModal.innerHTML = generateClickerModalHTML(config);
     document.body.appendChild(divModal);
-
+    this.oldBodyOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
     this.modal = divModal;
 
     this.config = config;
@@ -195,6 +196,7 @@ class Editor {
     this.modal.querySelector('button.bee-btn-cancel').addEventListener('click', (event) => {
       utility.stopPropagation(event);
       utility.destroy(this.modal);
+      document.body.style.overflow = this.oldBodyOverflow;
     });
 
     this.modal.querySelector('button.bee-btn-ok').addEventListener('click', (event) => {
@@ -202,13 +204,15 @@ class Editor {
       let modifiedHTML = this.editor.innerHTML;
       this.config.okCallback(modifiedHTML, this.config.index);
       utility.destroy(this.modal);
+      document.body.style.overflow = this.oldBodyOverflow;
     });
 
     this.editor.addEventListener('blur', () => {
       if (selection.getRangeAt && selection.rangeCount) {
         this.setRange(selection.getRangeAt(0));
       }
-    });
+      //this.modal.style.height = '100%';
+    }, true);
 
     this.editor.addEventListener('keyup', (e) => {
       var selection = window.getSelection();
@@ -221,6 +225,28 @@ class Editor {
       var range = selection.getRangeAt(0);
       this.setRange(range);
     }, true);
+
+    this.editor.addEventListener('touchstart', (e) => {
+      var selection = window.getSelection();
+      var range = selection.getRangeAt(0);
+      this.setRange(range);
+    }, true);
+
+    this.editor.addEventListener('focus', (e) => {
+      //this.modal.style.height = window.innerHeight;
+      //alert('window.innerHeight:2:' + window.innerHeight);
+
+      //var sx = document.body.scrollLeft, sy = document.body.scrollTop;
+      //var naturalHeight = window.innerHeight;
+      //window.scrollTo(sx, document.body.scrollHeight);
+      //var keyboardHeight = naturalHeight - window.innerHeight;
+      //window.scrollTo(sx, sy);
+      //
+      //var heightWithoutKeyboard = window.innerHeight - keyboardHeight;
+      //this.modal.style.height = heightWithoutKeyboard + 'px';
+
+      //this.modal.style.height = '300px';
+    }, false);
   }
 
   focus(focusStart) {
