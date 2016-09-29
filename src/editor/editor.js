@@ -1,4 +1,5 @@
 import './editor.css';
+import './more-btn.css';
 
 import { generateClickerModalHTML } from '../common/templates';
 import utility from '../common/utility';
@@ -65,7 +66,7 @@ class Editor {
     footMenuList.appendChild(docfrag);
 
     if (pluginsLength > 5) {
-      footMenuList.style.width = (window.innerWidth - 60) + 'px';
+      // footMenuList.style.width = (window.innerWidth - 60) + 'px';
       this.modal.querySelector('.bee-modal-footer').classList.toggle('show-more-button');
     }
   }

@@ -29,16 +29,11 @@
   left: 0;
   z-index: 10;
   box-sizing: border-box;
-  padding: 5px;
   width: 100%;
   height: 44px;
-  border-width: 0;
-  border-style: solid;
-  border-top: 1px solid transparent;
-  border-bottom: 1px solid #ddd;
-  background-color: white;
+  /*background-color: white;*/
   /* border-width: 1px will actually create 2 device pixels on retina; */
-  background-size: 0;
+  background: #000;
 }
 
 .bee-modal .bee-modal-header .bee-btn {
@@ -47,9 +42,6 @@
   position: relative;
   display: inline-block;
   margin: 0;
-  border-width: 1px;
-  border-style: solid;
-  border-radius: 2px;
   vertical-align: top;
   text-align: center;
   text-overflow: ellipsis;
@@ -58,12 +50,13 @@
   padding: 0 8px;
   min-width: initial;
   min-height: 31px;
-  font-weight: 400;
+  font-weight: bold;
   font-size: 13px;
   line-height: 32px;
   border-color: transparent;
   background: none;
   box-shadow: none;
+  width: 25%;
 }
 
 .bee-modal .bee-modal-header .bee-btn:focus {
@@ -72,16 +65,10 @@
 
 .bee-modal .bee-modal-header .bee-btn-cancel {
   color: #ef4e3a;
-  float: left;
 }
 
 .bee-modal .bee-modal-header .bee-btn-ok {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  bottom: 5px;
   color: #4a87ee;
-  float: right;
 }
 
 .bee-modal .bee-modal-body {
@@ -112,12 +99,13 @@
   /*line-height: 44px;*/
   border-color: #b2b2b2;
   /*background-color: #f8f8f8;*/
-  background-color: #525d63;
+  background-color: #000;
   /*background-image: linear-gradient(0deg, #b2b2b2, #b2b2b2 50%, transparent 50%);*/
   color: #444;
   width: 100%;
   transition: height 0.30s ease-in-out;
   font-size: 0;
+  z-index: 999;
 
   ul {
     list-style: none;
@@ -177,64 +165,6 @@
       }
     }
   }
-
-  > #more-button {
-    display: none;
-    vertical-align: top;
-    font-size: 0;
-    background: #525d63;
-    position: relative;
-
-    > div {
-      width: 30px;
-      height: 44px;
-      /*line-height: 44px;*/
-      /*vertical-align: top;*/
-      display: inline-block;
-      text-align: center;
-      position: relative;
-
-      &.disable {
-        .icon {
-          fill: #333;
-        }
-      }
-    }
-
-    &:before {
-       content: '';
-       background-color: #51b5ab;
-       transform: skew(-5deg);
-       position: absolute;
-       top: 0;
-       right: 60px;
-       width: 2px;
-       height: 44px;
-       z-index: 10;
-       box-shadow: -2px 0px 5px #333;
-     }
-
-    .icon {
-      fill: #51b5ab;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate3d(-50%, -50%, 0);
-
-      /*position: absolute;*/
-      /*left: 0;*/
-      /*right: 0;*/
-      /*top: 0;*/
-      /*bottom: 0;*/
-      /*margin: auto;*/
-    }
-  }
-}
-
-.bee-modal .bee-modal-footer.show-more-button {
-  > #more-button {
-    display: inline-block;
-  }
 }
 
 .bee-dropdown-menu {
@@ -270,3 +200,6 @@
   width: 20px;
   fill: #fff;
 }
+
+
+

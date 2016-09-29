@@ -8,10 +8,6 @@ export function generateClickerModalHTML(options) {
         <button class="bee-btn bee-btn-ok">
           ${options.okText || 'OK'}
         </button>
-      </div>
-      <div class="bee-modal-footer">
-        <ul class="bee-modal-footer-menu">
-        </ul>
         <div id="more-button">
           <div id="arrow-left">
             <svg class="icon"><use xlink:href="#icon-arrow-left2"></use></svg>
@@ -20,6 +16,10 @@ export function generateClickerModalHTML(options) {
             <svg class="icon"><use xlink:href="#icon-arrow-right2"></use></svg>
           </div>
         </div>
+      </div>
+      <div class="bee-modal-footer">
+        <ul class="bee-modal-footer-menu">
+        </ul>
       </div>
       <div class="bee-modal-body">
         <div id="bee-editor-content" class="bee-modal-content" contentEditable="true">

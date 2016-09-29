@@ -1,0 +1,13 @@
+#more-button {
+  display: inline-block;
+  width: 50%;
+  font-size: 0;
+
+  > div {
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    height: 44px;
+    line-height: 44px;
+  }
+}
