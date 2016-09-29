@@ -234,6 +234,7 @@ class Editor {
     }, true);
 
     this.editor.addEventListener('focus', (e) => {
+      window.scrollTo(document.body.scrollLeft, document.body.scrollTop);
       //this.modal.style.height = window.innerHeight;
       //alert('window.innerHeight:2:' + window.innerHeight);
 
