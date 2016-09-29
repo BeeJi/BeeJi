@@ -24,7 +24,8 @@
   display: flex;
   transform: translate3d(0, 0, 0);
   user-select: none;
-  position: absolute;
+  position: fixed;
+
   right: 0;
   left: 0;
   z-index: 10;
@@ -76,7 +77,7 @@
   top: 88px;
   width: 100%;
   height: calc(100% - 88px);
-  overflow: hidden;
+  overflow: auto;
 }
 
 .bee-modal .bee-modal-body .bee-modal-content {
@@ -90,7 +91,7 @@
 }
 
 .bee-modal .bee-modal-footer {
-  position: absolute;
+  position: fixed;
   top: 44px;
   border-top-width: 1px;
   border-bottom-width: 0;
