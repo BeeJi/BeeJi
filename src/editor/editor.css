@@ -90,6 +90,10 @@
   overflow: auto;
 }
 
+.bee-modal .bee-modal-body .bee-modal-content:focus {
+  outline: none;
+}
+
 .bee-modal .bee-modal-footer {
   position: fixed;
   top: 44px;
